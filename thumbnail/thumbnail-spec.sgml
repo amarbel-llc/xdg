@@ -277,11 +277,12 @@ $XDG_CACHE_HOME/thumbnails/fail/
 
      <para> Beside the png format there is another internet standard which is
         important in this context: the <ulink
-        url="https://www.ietf.org/rfc/rfc2396.txt">URI
-        mechanism</ulink>. It is used to specify the location of the original
-        file. Only canonical absolute URIs (including the scheme) are used to
-        determine the original uniquely.</para>
-	
+        url="https://www.ietf.org/rfc/rfc2396.txt">URI mechanism</ulink>. It
+        is used to specify the location of the original file. For the global
+        thumbnail repository, canonical absolute URIs (including the scheme)
+        are used to determine the original uniquely. In shared thumbnail
+        repositories, URIs are relative to the repository used.</para>
+
      <para>The following keys and their appropriate values must be provided by
 	every program which supports this standard. All the keys are defined in
 	the "Thumb::" namespace or if already defined by the PNG standard
@@ -297,8 +298,11 @@ $XDG_CACHE_HOME/thumbnails/fail/
           </thead>
           <tbody>
 	  <row>
-	     <entry>Thumb::URI</entry> <entry>The absolute canonical uri for
-	     the original file. (eg file:///home/jens/photo/me.jpg)</entry>
+	     <entry>Thumb::URI</entry> <entry>The URI for the original file.
+	     For global thumbnails, this is an absolute canonical URI (e.g.
+	     file:///home/jens/photo/me.jpg). For shared thumbnail
+	     repositories, the URI is relative to the repository prefixed with
+	     ./ (e.g. ./picture.jpg).</entry>
 	  </row>
 	  <row>
 	     <entry>Thumb::MTime</entry><entry>The modification time of the
@@ -438,11 +442,14 @@ $XDG_CACHE_HOME/thumbnails/fail/
     </para>
     <orderedlist>
     <listitem>
-    <para>You need the absolute canonical URI for the original file, as stated
-    in <ulink
-    url="https://www.ietf.org/rfc/rfc2396.txt">URI RFC
-    2396</ulink>. In particular this defines to use three '/' for local 'file:'
-    resources (see example below).</para>
+    <para>For global thumbnails, you need the absolute canonical URI for the
+    original file, as stated in <ulink url="https://www.ietf.org/rfc/rfc2396.txt">
+    URI RFC 2396</ulink>. In particular this defines to use three '/' for local 'file:'
+    resources (see example below). For shared thumbnails, you need a canonical URI relative
+    to the shared thumbnail repository, comprised of a single "./"-prefixed and properly
+    encoded path segment for the filename, e.g. "./picture.png". The "./" prefix is required
+    to simplify encoding, and use of the canonical, minimally encoded form of the URI is
+    required to avoid mismatches between thumbnail generator and thumbnail reader.</para>
     </listitem>
     <listitem>
     <para>Calculate the MD5 hash for this URI. Not for the file it points to!
@@ -460,7 +467,7 @@ $XDG_CACHE_HOME/thumbnails/fail/
     <para>
     An example will illustrate this:
     </para>
-    <example><title>Saving a thumbnail</title>
+    <example><title>Saving a global thumbnail</title>
     <para>
     Consider we have a file ~/photos/me.png. We want to create a thumbnail with
     a size of 128x128 pixel for it, which means it will be stored in the
@@ -472,6 +479,21 @@ $XDG_CACHE_HOME/thumbnails/fail/
     results in the following final thumbnail path:</para>
 <programlisting>
 /home/jens/.cache/thumbnails/normal/c6ee772d9e49320e97ec29a7eb5b1697.png
+</programlisting>
+    </example>
+    <example><title>Saving a shared thumbnail</title>
+    <para>
+    Consider we have a file /mnt/pictures/picture.png. We want to create a thumbnail with
+    a size of 128x128 pixel for it, which means it will be stored in the
+    /mnt/pictures/.sh_thumbnails/normal directory. The relative canonical URI for the file in
+    this example is ./picture.png.
+    </para>
+    <para>
+    The MD5 hash for the uri as a hex string is
+    7fd0e41c1612f860427a76c4100745a3. Following the steps above this
+    results in the following final thumbnail path:</para>
+<programlisting>
+/mnt/pictures/.sh_thumbnails/normal/7fd0e41c1612f860427a76c4100745a3.png
 </programlisting>
     </example>
 
@@ -696,7 +718,7 @@ if (file.mtime != thumb.MTime) {
        </listitem>
        </orderedlist>
   </sect1>
-  
+
    <sect1 id="shared"><title>Shared Thumbnail repositories</title>
    <para>
    In some situations it is desirable to have a shared thumbnail repository. This 
@@ -707,29 +729,35 @@ if (file.mtime != thumb.MTime) {
    </para>
 
    <para>
-   Because the URI of such an image is not constant (a CD-ROM for example can be mounted
-   at different locations) the thumbnails should be in a relative path from the original 
-   image.
-   </para>
-
-   <para>
-   The location for shared thumbnails will be
+   A shared thumbnail repository is stored in the directory whose files it should contain
+   thumbnails for. The location for a shared thumbnail repository inside such a directory will be:
    </para>
  <programlisting>.sh_thumbnails/</programlisting>
    
    <para>Within this directory are the same subdirectories as in the global thumbnail directory.</para>
-   <programlisting>.sh_thumbnails/
-   .sh_thumbnails/normal/
-   .sh_thumbnails/large/
-   .sh_thumbnails/x-large/
-   .sh_thumbnails/xx-large/
-   .sh_thumbnails/fail/
+   <programlisting>
+.sh_thumbnails/
+.sh_thumbnails/normal/
+.sh_thumbnails/large/
+.sh_thumbnails/x-large/
+.sh_thumbnails/xx-large/
+.sh_thumbnails/fail/
    </programlisting>
    <para>The meaning of these directories is identical to their meaning in the global directory.</para>
-   
-   <para>The filename of the thumbnail is also in the shared thumbnail repository the md5sum 
-   of the URI. But, because the URI is possibly not constant, only the filename part of the 
-   URI should be used, no directory parts.</para>
+
+   <para>
+   Shared thumbnails use URIs relative to the thumbnail respository instead of absolute canonical
+   URIs. This applies both to the URI used when generating the thumbnail filename using md5sum, as
+   well as the Thumb::URI property. This is due to absolute paths not necessarily being consistent
+   across different users of the shared thumbnail repository.
+   </para>
+
+   <para>
+   Given an original file at "/mnt/pictures/picture.png", the shared thumbnail repository would be
+   located at "/mnt/pictures/.sh_thumbnails/". The repository would contain an entry for the URI
+   "./picture.png". A relative thumbnail URI must be comprised "./" followed by a single path segment
+   for the filename with canonical URI encoding applied.
+   </para>
    
    <sect2><title>Creating thumbnails in a shared thumbnail repository</title>
    <para>
@@ -737,7 +765,7 @@ if (file.mtime != thumb.MTime) {
    add or update a thumbnail in the shared thumbnail repository. Such a repository should only 
    be created on special request by the user. If a thumbnail is outdated or corrupt, a program 
    should create a new thumbnail in the personal thubmnail repository, and not update the shared
-   thumbnail repository. 
+   thumbnail repository.
    </para>
    
    <para>
