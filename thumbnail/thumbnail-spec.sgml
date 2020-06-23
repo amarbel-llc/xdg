@@ -277,7 +277,7 @@ $XDG_CACHE_HOME/thumbnails/fail/
 
      <para> Beside the png format there is another internet standard which is
         important in this context: the <ulink
-        url="http://community.roxen.com/developers/idocs/rfc/rfc2396.html">URI
+        url="https://www.ietf.org/rfc/rfc2396.txt">URI
         mechanism</ulink>. It is used to specify the location of the original
         file. Only canonical absolute URIs (including the scheme) are used to
         determine the original uniquely.</para>
@@ -433,14 +433,14 @@ $XDG_CACHE_HOME/thumbnails/fail/
 
     <para>The thumbnail filename is determined by a hashfunction. This proposal
     utilizes <ulink
-    url="http://community.roxen.com/developers/idocs/rfc/rfc1321.html">MD5</ulink>
+    url="https://www.ietf.org/rfc/rfc1321.txt">MD5</ulink>
     as hash mechanism in the following way.
     </para>
     <orderedlist>
     <listitem>
     <para>You need the absolute canonical URI for the original file, as stated
     in <ulink
-    url="http://community.roxen.com/developers/idocs/rfc/rfc2396.html">URI RFC
+    url="https://www.ietf.org/rfc/rfc2396.txt">URI RFC
     2396</ulink>. In particular this defines to use three '/' for local 'file:'
     resources (see example below).</para>
     </listitem>
@@ -800,7 +800,7 @@ if (file.mtime != thumb.MTime) {
   <itemizedlist>
   <listitem>
   <para>URI standard: <ulink
-  url="http://community.roxen.com/developers/idocs/rfc/rfc2396.html">http://community.roxen.com/developers/idocs/rfc/rfc2396.html</ulink></para>
+  url="https://www.ietf.org/rfc/rfc2396.txt">https://www.ietf.org/rfc/rfc2396.txt</ulink></para>
   </listitem>
   <listitem>
   <para>PNG standard: <ulink
@@ -808,7 +808,7 @@ if (file.mtime != thumb.MTime) {
   </listitem>
   <listitem>
   <para>MD5 hash algorithm: <ulink
-  url="http://community.roxen.com/developers/idocs/rfc/rfc1321.html">http://community.roxen.com/developers/idocs/rfc/rfc1321.html</ulink>
+  url="https://www.ietf.org/rfc/rfc1321.txt">https://www.ietf.org/rfc/rfc1321.txt</ulink>
   </para>
   </listitem>
   </itemizedlist>
