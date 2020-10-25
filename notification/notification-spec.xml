@@ -1099,7 +1099,7 @@
       <funcdef>void
        <function>org.freedesktop.Notifications.CloseNotification</function>
       </funcdef>
-      <paramdef>UINT32 id</paramdef>
+      <paramdef>UINT32 <parameter>id</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
     <para>
