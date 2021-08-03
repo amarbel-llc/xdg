@@ -448,6 +448,31 @@
     </thead>
     <tbody valign="top">
      <row>
+      <entry><literal>"call"</literal></entry>
+      <entry>
+	A generic audio or video call notification that doesn't fit into
+	any other category.
+      </entry>
+     </row>
+     <row>
+      <entry><literal>"call.ended"</literal></entry>
+      <entry>
+	An audio or video call was ended.
+      </entry>
+     </row>
+     <row>
+      <entry><literal>"call.incoming"</literal></entry>
+      <entry>
+	A audio or video call is incoming.
+      </entry>
+     </row>
+     <row>
+      <entry><literal>"call.unanswered"</literal></entry>
+      <entry>
+	An incoming audio or video call was not answered.
+      </entry>
+     </row>
+     <row>
       <entry><literal>"device"</literal></entry>
       <entry>
        A generic device-related notification that doesn't fit into
