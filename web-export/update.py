@@ -148,7 +148,7 @@ class VcsObject:
 
 
 class SpecObject():
-    def __init__(self, vcs, spec_dir, version):
+    def __init__(self, vcs, spec_dir, version, full_path = None):
         self.vcs = vcs
         self.spec_dir = spec_dir
         self.version = version
@@ -156,7 +156,12 @@ class SpecObject():
         basename = os.path.basename(self.vcs.file)
         (self.basename_no_ext, self.ext) = os.path.splitext(basename)
 
-        self.filename = '%s-%s%s' % (self.basename_no_ext, self.version, self.ext)
+        if not full_path:
+            self.filename = '%s-%s%s' % (self.basename_no_ext, self.version, self.ext)
+            self.dir = None
+        else:
+            self.filename = os.path.basename(full_path)
+            self.dir = os.path.dirname(full_path)
 
         if self.ext not in ['.xml', '.sgml', '.txt', '.dtd', '.html']:
             raise Exception('Format \'%s\' not supported for %s' % (self.ext, self.vcs.get_url()))
@@ -166,8 +171,9 @@ class SpecObject():
         self.multiple_chunks = False
 
     def download(self):
-        safe_mkdir(self.spec_dir)
-        path = os.path.join(self.spec_dir, self.filename)
+        spec_dir = self.dir or self.spec_dir
+        safe_mkdir(spec_dir)
+        path = os.path.join(spec_dir, self.filename)
 
         if os.path.exists(path):
             current_hash = get_hash_from_path(path)
@@ -319,7 +325,8 @@ for line in lines:
     if not line or line.startswith('#'):
         continue
 
-    (data, revision, version, path) = line.split()
+    # Last field is optional
+    (data, revision, version, path, full_path) = (line.split() + [None]*1)[:5]
     splitted_line = data.split(":")
     if data.startswith("git:"):
         repo = splitted_line[1]
@@ -329,9 +336,15 @@ for line in lines:
     else:
         vcs = VcsObject(splitted_line[0], None, data, revision)
 
-    spec = SpecObject(vcs, path, version)
+    spec = SpecObject(vcs, path, version, full_path)
 
     spec.download()
+    # Single file got installed
+    if full_path:
+        top_dir = full_path.split('/')[0]
+        source_dirs[top_dir] = os.path.join(public_dir, top_dir)
+        continue
+
     spec.htmlize()
 
     # Create latest links if it's the first time we see this spec

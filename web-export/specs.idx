@@ -1,5 +1,8 @@
 # Format is:
-# Remote URL                                                   gitrev          version  spec-name
+# Remote URL                                                   gitrev          version  spec-name     install-path
+#
+# install-path is optional, and only used for installing single files
+# in specific paths for legacy reasons
 
 git:xdg/xdg-specs:autostart/autostart-spec.xml                 HEAD            0.5	autostart-spec
 
