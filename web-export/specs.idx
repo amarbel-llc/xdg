@@ -1,3 +1,6 @@
+# Format is:
+# Remote URL                                                   gitrev          version  spec-name
+
 git:xdg/xdg-specs:autostart/autostart-spec.xml                 HEAD            0.5	autostart-spec
 
 # git:xdg/xdg-specs:basedir/basedir-spec.xml		HEAD	0.9	basedir-spec
