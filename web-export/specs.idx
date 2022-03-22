@@ -77,6 +77,9 @@ git:xdg/xdg-specs:menu/menu.dtd                                2403355e486ac6bc9
 
 git:xdg/xdg-specs:notification/notification-spec.xml	HEAD	1.2	notification-spec
 
+# Installs to http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd
+git:polkit/polkit:data/policyconfig-1.dtd   a2a805d269c55e2ca3d15a9a3c001aeb882a935e  1.0     polkit PolicyKit/1.0/policyconfig.dtd
+
 git:xdg/xdg-specs:recent-files/recent-file-spec.xml		2f2e0cc7ded9b2c8afe29281c621d8ee6c5def9a	0.2	recent-file-spec
 
 git:xdg/shared-mime-info:shared-mime-info-spec.xml	90eb7974ec4e8ea9ae7daa96b1d2f9a2b4fe9a20		0.21	shared-mime-info-spec
