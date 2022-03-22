@@ -53,15 +53,7 @@ if not spawn.find_executable("xmlto"):
     sys.exit(1)
 
 def safe_mkdir(dir):
-    if not dir:
-        return
-
-    try:
-        os.mkdir(dir)
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            raise e
-
+    os.makedirs(dir, exist_ok=True)
 
 def get_hash_from_fd(fd, algo = HASH, read_blocks = 1024):
     if algo not in [ 'md5' ]:
