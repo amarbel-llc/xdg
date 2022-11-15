@@ -243,6 +243,9 @@ class SpecObject():
                 shutil.copytree('../' + os.path.dirname(self.vcs.file) + '/html', html_dir)
             else:
                 shutil.copytree('../mpris-spec/doc/spec/', html_dir)
+        if not multiple_chunks_command:
+            file_path = os.path.join(html_dir, os.path.basename(self.vcs.file))
+            shutil.copy(path, file_path)
 
     def latestize(self, fd):
         filename_latest = '%s-latest%s' % (self.basename_no_ext, self.ext)
