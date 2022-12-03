@@ -568,7 +568,7 @@
 	    <entry id="key-hidden"><varname>Hidden</varname></entry>
 	    <entry>
 		  <varname>Hidden</varname> should have been called <varname>Deleted</varname>.
-		  It means the user deleted (at his level)
+		  It means the user deleted (at their level)
 		  something that was present (at an upper level, e.g. in the system dirs). It's
 		  strictly equivalent to the <filename>.desktop</filename> file not existing at all, as far as that user is
 		  concerned. This can also be used to "uninstall" existing files (e.g. due to a renaming)
