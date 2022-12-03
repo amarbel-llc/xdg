@@ -219,7 +219,7 @@
       <literal>$XDG_RUNTIME_DIR</literal> defines the base directory
       relative to which user-specific non-essential runtime files and
       other file objects (such as sockets, named pipes, ...) should be
-      stored. The directory MUST be owned by the user, and he MUST be
+      stored. The directory MUST be owned by the user, and they MUST be
       the only one having read and write access to it. Its Unix access
       mode MUST be 0700.
     </para>
@@ -227,11 +227,11 @@
       The lifetime of the directory MUST be bound to the user being
       logged in. It MUST be created when the user first logs in and if
       the user fully logs out the directory MUST be removed. If the
-      user logs in more than once he should get pointed to the same
+      user logs in more than once they should get pointed to the same
       directory, and it is mandatory that the directory continues to
-      exist from his first login to his last logout on the system, and
-      not removed in between. Files in the directory MUST not survive
-      reboot or a full logout/login cycle.
+      exist from their first login to their last logout on the system,
+      and not removed in between. Files in the directory MUST not
+      survive reboot or a full logout/login cycle.
     </para>
     <para>
       The directory MUST be on a local file system and not shared with
