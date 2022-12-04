@@ -120,7 +120,7 @@
 
     <para>The current situation is, that nearly every program introdues a new
     way of dealing with thumbnails. This results in the fact, that if the user
-    uses 4 or 5 different programs, he will end up with 4 or 5 thumbnails for
+    uses 4 or 5 different programs, they will end up with 4 or 5 thumbnails for
     the same file. It's obvious that this is not only a waste of the users disc
     space, but also makes the managing of large collections harder.
     </para>
@@ -662,7 +662,7 @@ if (file.mtime != thumb.MTime) {
      </listitem>
      <listitem>
      <para>The user can call a managing tool which lists all the thumbnails
-       together with their original file paths. From there he can delete single
+       together with their original file paths. From there they can delete single
        images, all images where the original doesn't exist anymore or all
        images older than eg. 30 days.</para>
      </listitem>
