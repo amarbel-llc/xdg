@@ -80,7 +80,7 @@
   <sect1 id="startup">
     <title>Autostart Of Applications During Startup</title>
     <para>
-      By placing an application's .desktop file
+      By placing an application's <filename>.desktop</filename> file
       in one of the Autostart directories the application will be
       automatically launched during startup of the user's desktop environment after the user
       has logged in.
@@ -88,7 +88,7 @@
     <sect2>
       <title>Autostart Directories</title>
       <para>
-        The Autostart Directories are $XDG_CONFIG_DIRS/autostart as defined
+        The Autostart Directories are <literal>$XDG_CONFIG_DIRS</literal>/autostart as defined
         in accordance with the
         <ulink url="http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html#referencing">
         "Referencing this specification"</ulink> section in the
@@ -101,74 +101,74 @@
       </para>
       <informalexample>
         <para>
-          Example: If $XDG_CONFIG_HOME is not set the Autostart Directory
-          in the user's home directory is ~/.config/autostart/
+          Example: If <literal>$XDG_CONFIG_HOME</literal> is not set the Autostart Directory
+          in the user's home directory is <filename>~/.config/autostart/</filename>
         </para>
       </informalexample>
       <informalexample>
         <para>
-          Example: If $XDG_CONFIG_DIRS is not set the system wide Autostart
-          Directory is /etc/xdg/autostart/
+          Example: If <literal>$XDG_CONFIG_DIRS</literal> is not set the system wide Autostart
+          Directory is <filename>/etc/xdg/autostart/</filename>
         </para>
       </informalexample>
       <informalexample>
         <para>
-          Example: If $XDG_CONFIG_HOME and $XDG_CONFIG_DIRS are not set and
-          the two files /etc/xdg/autostart/foo.desktop and
-          ~/.config/autostart/foo.desktop exist then only the file 
-          ~/.config/autostart/foo.desktop will be used because
-          ~/.config/autostart/ is more important than /etc/xdg/autostart/
+          Example: If <literal>$XDG_CONFIG_HOME</literal> and <literal>$XDG_CONFIG_DIRS</literal> are not set and
+          the two files <filename>/etc/xdg/autostart/foo.desktop</filename> and
+          <filename>~/.config/autostart/foo.desktop</filename> exist then only the file
+          <filename>~/.config/autostart/foo.desktop</filename> will be used because
+          <filename>~/.config/autostart/</filename> is more important than <filename>/etc/xdg/autostart/</filename>
         </para>
       </informalexample>
     </sect2>
     <sect2>
-      <title>Application .desktop Files</title>
+      <title>Application <filename>.desktop</filename> Files</title>
       <para>
-        An application .desktop file must have the format as defined in
+        An application <filename>.desktop</filename> file must have the format as defined in
         the <ulink url="http://standards.freedesktop.org/desktop-entry-spec/">
         "Desktop Entry Specification"</ulink>. All keys should be
         interpreted as defined with the following exceptions in order to
-        take into account that the .desktop files in an autostart directory
+        take into account that the <filename>.desktop</filename> files in an autostart directory
         are not shown in a menu.
       </para>
       <sect3>
         <title>Hidden Key</title>
         <para>
-          When the .desktop file has the Hidden key set to true, the .desktop
-          file MUST be ignored. When multiple .desktop files with the
+          When the <filename>.desktop</filename> file has the Hidden key set to true, the <filename>.desktop</filename>
+          file MUST be ignored. When multiple <filename>.desktop</filename> files with the
           same name exists in multiple directories then only the Hidden key
-          in the most important .desktop file must be considered: If it is
-          set to true all .desktop files with the same name
+          in the most important <filename>.desktop</filename> file must be considered: If it is
+          set to true all <filename>.desktop</filename> files with the same name
           in the other directories MUST be ignored as well.
         </para>
       </sect3>
       <sect3>
-        <title>OnlyShowIn and NotShowIn Keys</title>
+        <title> <varname>OnlyShowIn</varname> and <varname>NotShowIn</varname> Keys</title>
         <para>
-          The OnlyShowIn entry may contain a list of strings identifying
+          The <varname>OnlyShowIn</varname> entry may contain a list of strings identifying
           the desktop environments that MUST autostart this application,
           all other desktop environments MUST NOT autostart this application.
         </para>
         <para>
-          The NotShowIn entry may contain a list of strings identifying
+          The <varname>NotShowIn</varname> entry may contain a list of strings identifying
           the desktop environments that MUST NOT autostart this
           application, all other desktop environments MUST autostart this
           application.
         </para>
         <para>
-          Only one of these keys, either OnlyShowIn or NotShowIn, may appear
-          in a single .desktop file.
+          Only one of these keys, either <varname>OnlyShowIn</varname> or <varname>NotShowIn</varname>, may appear
+          in a single <filename>.desktop</filename> file.
         </para>
       </sect3>
       <sect3>
-        <title>TryExec Key</title>
+        <title> <varname>TryExec</varname> Key</title>
         <para>
-          A .desktop file with a non-empty TryExec field MUST NOT be
-          autostarted if the value of the TryExec key does NOT match with
-          an installed executable program. The value of the TryExec field
+          A <filename>.desktop</filename> file with a non-empty <varname>TryExec</varname> field MUST NOT be
+          autostarted if the value of the <varname>TryExec</varname> key does NOT match with
+          an installed executable program. The value of the <varname>TryExec</varname> field
           may either be an absolute path or the name of an executable
           without any path components. If the name of an executable is
-          specified without any path components then the $PATH environment
+          specified without any path components then the <literal>$PATH</literal> environment
           is searched to find a matching executable program.
         </para>
       </sect3>
@@ -177,11 +177,11 @@
       <title>Implementation Notes</title>
       <informalexample>
         <para>
-          If an application autostarts by having a .desktop file installed
+          If an application autostarts by having a <filename>.desktop</filename> file installed
           in the system wide autostart directory, an individual user can
           disable the automatic start of this application by placing a
-          .desktop file of the same name in its personal autostart directory
-          which contains the key Hidden=true.
+          <filename>.desktop</filename> file of the same name in its personal autostart directory
+          which contains the key <literal>Hidden=true</literal>.
         </para>
       </informalexample>
     </sect2>
@@ -240,7 +240,7 @@
       </para>
       <para>
         The relative path MUST NOT contain path components that refer to a
-        parent directory (../)
+        parent directory (<filename>../</filename>)
       </para>
       <para>
         The relative path MUST NOT point to an executable file.
