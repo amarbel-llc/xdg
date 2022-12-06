@@ -199,7 +199,13 @@
       <para>
         When a new medium is mounted the root directory of the medium should
         be checked for the following Autostart files in order of precedence:
-        .autorun, autorun, autorun.sh
+      </para>
+      <itemizedlist>
+        <listitem><para><filename>.autorun</filename></para></listitem>
+        <listitem><para><filename>autorun</filename></para></listitem>
+        <listitem><para><filename>autorun.sh</filename></para></listitem>
+      </itemizedlist>
+      <para>
         Only the first file that is present should be considered.
       </para>
       <para>
@@ -224,9 +230,14 @@
         Autostart file or b) a policy to ignore Autostart files is in effect
         then the root directory of the medium should be checked for the
         following Autoopen files in order of precedence:
-        .autoopen, autoopen .
+      </para>
+      <itemizedlist>
+        <listitem><para><filename>.autoopen</filename></para></listitem>
+        <listitem><para><filename>autoopen</filename></para></listitem>
+      </itemizedlist>
+      <para>
         Only the first file that is present should be considered.
-     </para>
+      </para>
       <para>
         The desktop environment MAY ignore Autoopen files altogether
         based on policy set by the user, system administrator or vendor.
