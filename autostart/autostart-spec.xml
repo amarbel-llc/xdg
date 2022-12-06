@@ -180,7 +180,7 @@
           If an application autostarts by having a <filename>.desktop</filename> file installed
           in the system wide autostart directory, an individual user can
           disable the automatic start of this application by placing a
-          <filename>.desktop</filename> file of the same name in its personal autostart directory
+          <filename>.desktop</filename> file of the same name in their personal autostart directory
           which contains the key <literal>Hidden=true</literal>.
         </para>
       </informalexample>
