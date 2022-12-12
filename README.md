@@ -19,6 +19,13 @@ continuous integration](https://gitlab.freedesktop.org/xdg/xdg-specs/-/blob/mast
 The sources files are in the [`web-export`](https://gitlab.freedesktop.org/xdg/xdg-specs/-/tree/master/web-export)
 directory.
 
+Building a single spec
+======================
+
+To build a single spec in `article` docbook xml format you can use xmlto, e.g.:
+
+    xmlto html-nochunks notification/notification-spec.xml -o _build/
+
 How to report issues
 ====================
 
