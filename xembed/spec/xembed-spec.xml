@@ -232,7 +232,7 @@
 	window which has the X input focus (set with
 	XSetInputFocus()). However, if the mouse pointer is inside
 	that focus window, the event is sent to the subwindow of the
-	focus window that is under the moues pointer. In modern toolkits,
+	focus window that is under the mouse pointer. In modern toolkits,
 	the X input focus is typically left on the toplevel window and
 	a separate logical input focus is implemented within the
 	toolkit. The toolkit ignores the window that the key event is
@@ -1220,7 +1220,7 @@ void send_xembed_message(
       <para>
 	Toolkits such as Qt and GTK+ have a concept of disabled
 	widgets. This notion is typically hierarchical, so if 
-	the embedder or a ancestry of the embedder becomes
+	the embedder or an ancestor of the embedder becomes
 	insensitive, widgets inside the client should be displayed as,
 	and act insensitive as well.
       </para>

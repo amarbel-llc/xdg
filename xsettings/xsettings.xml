@@ -62,7 +62,7 @@
 	<para>
 	  The Xrm database merges information from various sources - the
 	  ~/.Xdefaults file on the root window, and a property on the root
-	  window. This means that to programatically configure the Xrm
+	  window. This means that to programmatically configure the Xrm
 	  database in response to a GUI config tool is difficult and
 	  unreliable.
 	</para>
@@ -229,7 +229,7 @@ be set to 65535.
     </programlisting>
     <para>
       With the additional restrictions that '/' cannot appear in
-      the leading or trailing position, that two occurences of
+      the leading or trailing position, that two occurrences of
       '/' cannot be consecutive, and that the first character
       of the name, and and the first character after a slash
       cannot be one of '0'-'9'. Names may not be empty.
@@ -327,7 +327,7 @@ be set to 65535.
 	Having a process always present as the owner of the _XSETTING
 	selection ensures that there are no race conditions and is
 	simpler than trying to create a locking mechanism that can
-	work without a persistant process. It is also expected that to
+	work without a persistent process. It is also expected that to
 	properly handle notification of changes to the stored
 	properties most desktops will want a process running to watch
 	for changes in any case. In cases of tight resource usage, the

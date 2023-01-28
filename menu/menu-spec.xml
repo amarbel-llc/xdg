@@ -1343,7 +1343,7 @@
         <listitem>
           <para>
 	    The <link linkend="reserved-category-registry">list of
-	    Reserved Categories</link> containes categories that have a
+	    Reserved Categories</link> contains categories that have a
 	    desktop-specific meaning.
           </para>
         </listitem>
@@ -1912,7 +1912,7 @@
 
 	      </row><row>
 		<entry>Maps</entry>
-		<entry>Sofware for viewing maps, navigation, mapping, GPS</entry>
+		<entry>Software for viewing maps, navigation, mapping, GPS</entry>
 		<entry>Education or Science or Utility</entry>
 
 	      </row><row>
@@ -2311,7 +2311,7 @@
           </programlisting>
         </informalexample>
         And finally, a .menu file needs to be provided that links it all
-        togther:
+        together:
         <informalexample>
           <programlisting>
           <replaceable>sysconfdir</replaceable>/menus/application-merged/shinythings-webmirror.menu:

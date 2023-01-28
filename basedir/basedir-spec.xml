@@ -168,18 +168,18 @@
     </para>
     <para>
       Since <literal>$HOME</literal> might be shared between systems
-      of different achitectures, installing compiled binaries to
+      of different architectures, installing compiled binaries to
       <literal>$HOME</literal>/.local/bin could cause
       problems when used on systems of differing architectures. This
       is often not a problem, but the fact that
-      <literal>$HOME</literal> becomes partially achitecture-specific
+      <literal>$HOME</literal> becomes partially architecture-specific
       if compiled binaries are placed in it should be kept in mind.
     </para>
     <para>
       <literal>$XDG_DATA_DIRS</literal> defines the preference-ordered set of
       base directories to search for data files in addition to the
       <literal>$XDG_DATA_HOME</literal> base directory.
-      The directories in <literal>$XDG_DATA_DIRS</literal> should be seperated
+      The directories in <literal>$XDG_DATA_DIRS</literal> should be separated
       with a colon ':'.
     </para>
     <para>
@@ -190,7 +190,7 @@
       <literal>$XDG_CONFIG_DIRS</literal> defines the preference-ordered set of
       base directories to search for configuration files in addition to the
       <literal>$XDG_CONFIG_HOME</literal> base directory.
-      The directories in <literal>$XDG_CONFIG_DIRS</literal> should be seperated
+      The directories in <literal>$XDG_CONFIG_DIRS</literal> should be separated
       with a colon ':'.
     </para>
     <para>

@@ -162,7 +162,7 @@
         displayed to the user.
        </para>
        <para>
-        The default action (usually invoked my clicking the notification)
+        The default action (usually invoked by clicking the notification)
         should have a key named <literal>"default"</literal>. The name can
         be anything, though implementations are free not to display it.
        </para>

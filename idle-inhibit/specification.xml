@@ -86,7 +86,7 @@
 
 			<para>The D-Bus service name, org.freedesktop.ScreenSaver, intentionally contains
 			the word screensaver, as KDE implements the idle inhibition API in a screensaver
-			sub-module. It was necessary for the specificed Idle Inhibition Service API to be
+			sub-module. It was necessary for the specified Idle Inhibition Service API to be
 			compatible with this existing software.</para>
 
 			<para>KDE's implementation until kde-workspace 4.11.8 lived on the

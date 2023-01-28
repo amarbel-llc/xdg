@@ -179,7 +179,7 @@
         <para>
           If an application autostarts by having a .desktop file installed
           in the system wide autostart directory, an individual user can
-          disable the autotomatic start of this application by placing a
+          disable the automatic start of this application by placing a
           .desktop file of the same name in its personal autostart directory
           which contains the key Hidden=true.
         </para>
@@ -198,7 +198,7 @@
       <title>Autostart Files</title>
       <para>
         When a new medium is mounted the root directory of the medium should
-        be checked for the following Autostart files in order of precendence: 
+        be checked for the following Autostart files in order of precedence:
         .autorun, autorun, autorun.sh
         Only the first file that is present should be considered.
       </para>

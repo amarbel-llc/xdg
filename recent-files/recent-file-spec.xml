@@ -83,7 +83,7 @@
      The URI, Mime-Type, Timestamp tags are required, but the
      Private, Groups, and Group tags are not.  The Timestamp tag should be
      the number of
-     seconds sinced the Epoch when the item was added to the list.
+     seconds since the Epoch when the item was added to the list.
      The Group tags exist for the purpose of
      making groups of items with an arbitrary set of MIME types.  A single item
      can belong to an unlimited number of groups.  If the Private tag is

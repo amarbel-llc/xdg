@@ -264,7 +264,7 @@
 
 			<para>Many client applications may choose not to make use of the provisions to
 			encrypt secrets in transit. In fact for applications unable to prevent their own
-			memory from being paged to disk (eg: Java, C# or Python apps), transfering
+			memory from being paged to disk (eg: Java, C# or Python apps), transferring
 			encrypted secrets would be an excersize of questionable value.</para>
 
 			<section>
@@ -299,7 +299,7 @@
 				<para>When <function>OpenSession()</function> completes, it returns the session object
 				path along with a valid session object path.</para>
 
-				<para>Once an session algorithm has been negotiated, it is used for all transfer a
+				<para>Once a session algorithm has been negotiated, it is used for all transfer of
 				secrets whenever that session is specified along with the
 				<link linkend='type-Secret'><classname>secret</classname></link>.</para>
 			</section>
@@ -384,7 +384,7 @@
 
 			<para>A service may choose to unlock items or collections just for a single client
 			application. Alternatively the service may choose to allow any client application to access
-			items or collections unlocked by a another client application.</para>
+			items or collections unlocked by another client application.</para>
 
 			<para>A client application should always be ready to unlock the items for the secrets
 			it needs, or objects it must modify. It must not assume that an item is already unlocked
@@ -440,7 +440,7 @@
 			argument to display the prompt attached to their application window.</para>
 
 			<para>Once the user provides the additional required information to the prompt, the service
-			completes the operation that required the prompt. Then it emits the the
+			completes the operation that required the prompt. Then it emits the
 			<link linkend='org.freedesktop.Secret.Prompt.Completed'><function>Completed</function></link>
 			signal of the prompt object. The <parameter class='function'>result</parameter> argument of
 			the signal contains operation an operation specific result.</para>

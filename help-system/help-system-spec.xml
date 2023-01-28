@@ -162,7 +162,7 @@
       The page identifier specifies which chunk to display. Not all applications
       will split a DocBook document into chunks in the same way, so the page
       identifier may not map exactly to the <sgmltag>id</sgmltag> attribute
-      of an element that is chunked. In this case, the applicaiton displays
+      of an element that is chunked. In this case, the application displays
       the nearest enclosing chunk and treats the page identifier as an anchor
       if no anchor was explicitly provided.</para>
     </section>
