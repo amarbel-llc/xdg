@@ -5,6 +5,11 @@ variables:
   LANG: C.UTF-8
   GIT_SUBMODULE_STRATEGY: recursive
 
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'push'
+
 pages:
   before_script:
     - rm -f /etc/rpm/macros.image-language-conf
