@@ -2067,6 +2067,11 @@
 		<entry>GTK</entry>
 
 	      </row><row>
+	        <entry>LXQt</entry>
+		<entry>Application based on LXQt libraries</entry>
+		<entry>QT</entry>
+
+	      </row><row>
 		<entry>XFCE</entry>
 		<entry>Application based on XFCE libraries</entry>
 		<entry>GTK</entry>
