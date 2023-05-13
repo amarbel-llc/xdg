@@ -2067,6 +2067,11 @@
 		<entry>GTK</entry>
 
 	      </row><row>
+		<entry>DDE</entry>
+		<entry>Application based on DDE libraries</entry>
+		<entry>Qt</entry>
+
+	      </row><row>
 		<entry>GTK</entry>
 		<entry>Application based on GTK+ libraries</entry>
 		<entry></entry>
