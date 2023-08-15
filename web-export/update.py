@@ -163,7 +163,7 @@ class SpecObject():
             self.filename = os.path.basename(full_path)
             self.dir = os.path.dirname(full_path)
 
-        if self.ext not in ['.xml', '.sgml', '.txt', '.dtd', '.html']:
+        if self.ext not in ['.xml', '.sgml', '.txt', '.dtd', '.html', '.md']:
             raise Exception('Format \'%s\' not supported for %s' % (self.ext, self.vcs.get_url()))
 
         self.downloaded = False
@@ -224,6 +224,10 @@ class SpecObject():
         elif self.ext == '.sgml':
             one_chunk_command = ['docbook2html', '-o', self.spec_dir, '--nochunks', path]
             multiple_chunks_command = ['docbook2html', '-o', html_dir, path]
+        elif self.ext == '.md':
+            safe_mkdir(html_dir)
+            shutil.copy('simple.css', html_dir + '/simple.css')
+            one_chunk_command = ['discount-mkd2html', '-css', 'simple.css', path, html_dir + '/index.html']
 
         if one_chunk_command:
             retcode = subprocess.call(one_chunk_command)
