@@ -565,7 +565,7 @@ $XDG_CACHE_HOME/thumbnails/fail/
       possible. But the probability is very low and can be ignored in this
       context. The worst case would be that a thumbnail overwrites another
       valid one. Ok, if they have exactly the same modification time it is
-      theoretically possible too that a wrong thumbnail for a file will be
+      possible too that a wrong thumbnail for a file will be
       displayed (see <link linkend="modifications">Detect
       Modifications</link>).
       </para>
@@ -587,19 +587,30 @@ $XDG_CACHE_HOME/thumbnails/fail/
 
     <sect1 id="modifications"><title>Detect Modifications</title>
 
+
      <para> One important thing is to assure that the thumbnail image displays
         the same information than the original, only in a downscaled
         version. To make this possible we use the modification time stored in
         the required <link linkend="addinfos">'Thumb::MTime' key</link> and
-        check if it's equal the current modification time of the
-        original. If not we must recreate the thumbnail. <example><title>Algorithm
-        to check for modification.</title>
+        the file size, if it is available in a <link linkend="addinfos">'Thumb::Size' key</link>.
+        These should be compared to the current modification time and size of the file.
+        If the modification time or size differ, we must recreate the thumbnail.
+        <example><title>Algorithm to check for modification.</title>
          <programlisting>
-if (file.mtime != thumb.MTime) {
+if (file.mtime != thumb.MTime || (isSet(thumb.Size) && file.size != thumb.Size) ) {
       recreate_thumbnail ();
 }
          </programlisting>
          </example></para>
+
+      <para> Relying solely on modification times may fail in cases where
+        collections of files have been copied to a new folder.
+        several files can share the same modification
+        time - to within the one second resolution of
+        <link linkend="addinfos">'Thumb::MTime'</link>. Activities like swapping
+        the filenames of these files may then result in incorrect thumbnails. Where the thumbnail
+        includes the <link linkend="addinfos">'Thumb::Size' key</link>, the extra check
+        of comparing sizes can avoid this issue. </para> 
 
       <note><para> It is not sufficient to do a <prompt>file.mtime >
          thumb.MTime</prompt> check. If the user moves another file
