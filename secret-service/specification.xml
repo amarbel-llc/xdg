@@ -257,18 +257,18 @@
 			<para>You must specify a session when retrieving or storing a secret. The session
 			controls how the secret is encoded during transfer. Since this is a D-Bus API, the
 			data in all method calls and other accesses in this API will go through multiple
-			processes, and may be cached arbitrarilyby the OS or elsewhere.</para>
+			processes, and may be cached arbitrarily by the OS or elsewhere.</para>
 
 			<para>The Secrets API has provision to encrypt secrets while in transit between
 			the service and the client application. The encryption is not envisioned to withstand
 			man in the middle attacks, or other active attacks. It is envisioned to minimize
-			storage of plain text secrets in memory and prevent storage plain text storage of
+			storage of plain text secrets in memory and prevent plain text storage of
 			secrets in a swap file or other caching mechanism.</para>
 
 			<para>Many client applications may choose not to make use of the provisions to
 			encrypt secrets in transit. In fact for applications unable to prevent their own
 			memory from being paged to disk (eg: Java, C# or Python apps), transferring
-			encrypted secrets would be an excersize of questionable value.</para>
+			encrypted secrets would be an exercise of questionable value.</para>
 
 			<section>
 				<title>Negotiation of Algorithms</title>
