@@ -283,17 +283,22 @@ $XDG_CACHE_HOME/thumbnails/fail/
         are used to determine the original uniquely. In shared thumbnail
         repositories, URIs are relative to the repository used.</para>
 
-     <para>The following keys and their appropriate values must be provided by
-	every program which supports this standard. All the keys are defined in
+     <para>The following keys and their appropriate values are used with
+	this standard. All the keys are defined in
 	the "Thumb::" namespace or if already defined by the PNG standard
 	without any namespace.</para>
 	<para>
 	 <table>
-	   <title>Required attributes.</title>
-	  <tgroup cols="2" align="left">
+	   <title>Used attributes.</title>
+	  <tgroup cols="4" align="left">
+	  <colspec colname="key"/>
+	  <colspec colname="description"/>
+	  <colspec colname="global"/>
+	  <colspec colname="shared"/>
           <thead>
 	  <row>
             <entry>Key</entry><entry>Description</entry>
+	    <entry>Global</entry><entry>Shared</entry>
           </row>
           </thead>
           <tbody>
@@ -303,55 +308,47 @@ $XDG_CACHE_HOME/thumbnails/fail/
 	     file:///home/jens/photo/me.jpg). For shared thumbnail
 	     repositories, the URI is relative to the repository prefixed with
 	     ./ (e.g. ./picture.jpg).</entry>
+	     <entry>Must verify</entry><entry>Must verify if present</entry>
 	  </row>
 	  <row>
 	     <entry>Thumb::MTime</entry><entry>The modification time of the
 	     original file (as indicated by stat, which is represented as
 	     seconds since January 1st, 1970).</entry>
+	     <entry>Must verify</entry><entry>Must verify if present</entry>
 	  </row>
+          <row>
+	     <entry>Thumb::Size</entry><entry>File size in bytes of the original
+	     file.</entry>
+	     <entry namest="global" nameend="shared">Should verify if present</entry>
+          </row>
+          <row>
+	     <entry>Thumb::Mimetype</entry><entry>The file mimetype. </entry>
+	     <entry namest="global" nameend="shared">Optional</entry>
+          </row>
+	  <row>
+	    <entry>Description</entry><entry>This key is predefined by the PNG
+                standard. It provides a general description about the thumbnail
+                content and can be used eg. for accessability needs.</entry>
+	     <entry namest="global" nameend="shared">Optional</entry>
+	  </row>
+	  <row>
+	     <entry>Software</entry><entry>This key is predefined by the PNG
+                  standard. It stores the name of the program which generated
+                  the thumbnail.</entry>
+	     <entry namest="global" nameend="shared">Optional</entry>
+          </row>
 	  </tbody>
 	  </tgroup>
 	  </table>
 	  </para>
 
 	  <para>If it's not possible to obtain the modification time of the
-	  original then you shouldn't store a thumbnail for it at all. The
+	  original then you shouldn't store a global thumbnail for it at all,
+	  but may use a shared thumbnail if it does not have a Thumb::MTime attribute. The
 	  mtime is needed to check if the thumbnail is valid yet (see <link
 	  linkend="modifications">Detect modifications</link>). Otherwise we
 	  can't guarantee the content corresponds to the original and must
 	  regenerate a thumb every time anyway.</para>
-
-	 <para>
-         <table>
-	  <title>Additional attributes.</title>
-	  <tgroup cols="2" align="left">
-          <thead>
-	  <row>
-            <entry>Key</entry><entry>Description</entry>
-          </row>
-          </thead>
-          <tbody>
-          <row>
-	     <entry>Thumb::Size</entry><entry>File size in bytes of the original
-	     file.</entry>
-          </row>
-          <row>
-	     <entry>Thumb::Mimetype</entry><entry>The file mimetype. </entry>
-          </row>
-	  <row>
-	    <entry>Description</entry><entry>This key is predefined by the PNG
-                standard. It provides a general description about the thumbnail
-                content and can be used eg. for accessability needs.</entry>
-	  </row>
-	  <row>
-	     <entry>Software</entry><entry>This key is predefined by the PNG
-                  standard. It stores the name of the program which generated
-                  the thumbnail.</entry>
-          </row>
-	  </tbody>
-	  </tgroup>
-	  </table>
-	  </para>
 
      <para>There are surely some situations where further information are
         desired. Eg. the Gimp could save the number of layers an image has or
@@ -590,15 +587,18 @@ $XDG_CACHE_HOME/thumbnails/fail/
 
      <para> One important thing is to assure that the thumbnail image displays
         the same information than the original, only in a downscaled
-        version. To make this possible we use the modification time stored in
-        the required <link linkend="addinfos">'Thumb::MTime' key</link> and
-        the file size, if it is available in a <link linkend="addinfos">'Thumb::Size' key</link>.
-        These should be compared to the current modification time and size of the file.
-        If the modification time or size differ, we must recreate the thumbnail.
+        version. To make this possible we compare the original file's size and modification time
+        with the attribytes stored in the <link linkend="addinfos">'Thumb::MTime'</link> and
+        <link linkend="addinfos">'Thumb::Size'</link> keys.
+        The absence of the MTime key in a global thumbnail is an error; apart from that,
+        checks are only performed if the relevant key is present.
+        If any check fails, the thumbnail can not be used and must be recreated.
         <example><title>Algorithm to check for modification.</title>
          <programlisting>
-if (file.mtime != thumb.MTime || (isSet(thumb.Size) && file.size != thumb.Size) ) {
-      recreate_thumbnail ();
+if ((!thumb.isShared && !isSet(thumb.MTime)) ||
+      (isSet(thumb.MTime) && file.mtime != thumb.MTime) ||
+      (isSet(thumb.Size) && file.size != thumb.Size) {
+   recreate_thumbnail();
 }
          </programlisting>
          </example></para>
@@ -618,7 +618,7 @@ if (file.mtime != thumb.MTime || (isSet(thumb.Size) && file.size != thumb.Size) 
          the thumbnail stored mtime, we won't recognize this modification.
          </para></note>
 
-      <para> If for some reason the thumbnail doesn't have the 'Thumb::MTime'
+      <para> If for some reason a non-shared thumbnail doesn't have the 'Thumb::MTime'
          key (although it's required) it should be recreated in any
          case.</para>
 
@@ -769,6 +769,14 @@ if (file.mtime != thumb.MTime || (isSet(thumb.Size) && file.size != thumb.Size) 
    "./picture.png". A relative thumbnail URI must be comprised "./" followed by a single path segment
    for the filename with canonical URI encoding applied.
    </para>
+
+   <para> For shared repositories whose access method does not provide a consistent mtime (or not even a
+   consistent name), the creator may leave out the Thumb::MTime (or Thumb::URI) metadata items, as long
+   as it has alternative means of determining freshness and removing stale thumbnail files. For example,
+   when a shared thumbnail generator detects that a raw file and a compressed file are visually identical,
+   it can use a hardlink to a single thumbnail file for two files that vary in their MTime, file name
+   (thus URI) and size, as long as it includes neither of those metadata in the thumbnail file.
+   </para>
    
    <sect2><title>Creating thumbnails in a shared thumbnail repository</title>
    <para>
@@ -800,6 +808,9 @@ if (file.mtime != thumb.MTime || (isSet(thumb.Size) && file.size != thumb.Size) 
    thumbnail is correct, the thumbnail in the personal repository can be deleted and the thumbnail
    from the shared collection can be used.
    </para>
+   <para>The lack of Thumb::MTime and Thumb::URI in a shared thumbnail does not automatically mark
+   the thumbnail as invalid. The program may still opt to create a local thumbnail, but may prefer
+   not to do so (e.g. because it would involve heavy network traffic).</para>
    </sect2>
  
 	</sect1>
