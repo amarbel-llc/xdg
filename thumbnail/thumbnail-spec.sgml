@@ -291,10 +291,12 @@ $XDG_CACHE_HOME/thumbnails/fail/
 	 <table>
 	  <title>Used attributes.</title>
 	  <tgroup cols="4" align="left">
+	  <!--
 	  <colspec colname="key"/>
 	  <colspec colname="description"/>
 	  <colspec colname="global"/>
 	  <colspec colname="shared"/>
+	  -->
           <thead>
 	  <row>
             <entry>Key</entry><entry>Description</entry>
@@ -319,23 +321,35 @@ $XDG_CACHE_HOME/thumbnails/fail/
           <row>
 	     <entry>Thumb::Size</entry><entry>File size in bytes of the original
 	     file.</entry>
-	     <entry namest="global" nameend="shared">Should verify if present</entry>
+	     <!-- once the underlying docbook version is updated, the rest of this row should be changed to: -->
+	     <!-- <entry namest="global" nameend="shared">Should verify if present</entry> -->
+	     <entry>Should verify if present</entry>
+	     <entry>Should verify if present</entry>
           </row>
           <row>
 	     <entry>Thumb::Mimetype</entry><entry>The file mimetype. </entry>
-	     <entry namest="global" nameend="shared">Optional</entry>
+	     <!-- once the underlying docbook version is updated, the rest of this row should be changed to: -->
+	     <!-- <entry namest="global" nameend="shared">Optional</entry> -->
+	     <entry>Optional</entry>
+	     <entry>Optional</entry>
           </row>
 	  <row>
 	    <entry>Description</entry><entry>This key is predefined by the PNG
                 standard. It provides a general description about the thumbnail
                 content and can be used eg. for accessability needs.</entry>
-	     <entry namest="global" nameend="shared">Optional</entry>
+	     <!-- once the underlying docbook version is updated, the rest of this row should be changed to: -->
+	     <!-- <entry namest="global" nameend="shared">Optional</entry> -->
+	     <entry>Optional</entry>
+	     <entry>Optional</entry>
 	  </row>
 	  <row>
 	     <entry>Software</entry><entry>This key is predefined by the PNG
                   standard. It stores the name of the program which generated
                   the thumbnail.</entry>
-	     <entry namest="global" nameend="shared">Optional</entry>
+	     <!-- once the underlying docbook version is updated, the rest of this row should be changed to: -->
+	     <!-- <entry namest="global" nameend="shared">Optional</entry> -->
+	     <entry>Optional</entry>
+	     <entry>Optional</entry>
           </row>
 	  </tbody>
 	  </tgroup>
