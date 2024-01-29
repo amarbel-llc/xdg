@@ -289,7 +289,7 @@ $XDG_CACHE_HOME/thumbnails/fail/
 	without any namespace.</para>
 	<para>
 	 <table>
-	   <title>Used attributes.</title>
+	  <title>Used attributes.</title>
 	  <tgroup cols="4" align="left">
 	  <colspec colname="key"/>
 	  <colspec colname="description"/>
