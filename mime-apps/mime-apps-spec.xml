@@ -63,7 +63,7 @@
       </tbody>
     </tgroup>
   </informaltable>
-  <para>In this table, $desktop is one of the names of the current desktop, lowercase (for instance, kde, gnome, xfce, etc.)</para>
+  <para>In this table, $desktop is one of the names of the current desktop, lowercase (for instance, kde, gnome, xfce, lxqt, etc.)</para>
   <para>This is determined from taking the ascii-lowercase form of a component the environment variable $XDG_CURRENT_DESKTOP, which is a colon-separated list of names that the current desktop is known as.</para>
   <para>The $desktop variable should be each of these values in turn.</para>
   <para>All of the above files are referred to as "mimeapps.list" in the rest of this specification, for simplicity.</para>
