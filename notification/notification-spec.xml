@@ -39,7 +39,7 @@
  <sect1 id="introduction">
   <title>Introduction</title>
   <para>
-   This is a draft standard for a desktop notifications service,
+   This is a standard for a desktop notifications service,
    through which applications can generate passive popups to notify
    the user in an asynchronous manner of events.
   </para>
