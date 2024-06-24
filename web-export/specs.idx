@@ -103,6 +103,8 @@ git:xdg/shared-mime-info:shared-mime-info-spec.xml	bfd730e142344783603ac4cdf0467
 git:xdg/shared-mime-info:shared-mime-info-spec.xml	f6fa8bf89055da53e9323aca59d5337729178ade		0.3	shared-mime-info-spec
 git:xdg/shared-mime-info:shared-mime-info-spec.xml	e235408efaeec39b5be22d4f1d4218da64247d74		0.2	shared-mime-info-spec
 
+git:xdg/xdg-specs:shortcuts/shortcuts.txt		HEAD							0.1	shortcuts-spec
+
 git:xdg/sound-theme-spec:spec/sound-naming-spec.xml	HEAD							0.2	sound-naming-spec
 git:xdg/sound-theme-spec:spec/sound-theme-spec.xml	HEAD							0.2	sound-theme-spec
 
