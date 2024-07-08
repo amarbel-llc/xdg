@@ -2,7 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 ]>
-<article id="index">
+<article id="index" lang="en">
   <articleinfo>
     <title>XEmbed Protocol Specification</title>
     <releaseinfo>Version 0.5</releaseinfo>

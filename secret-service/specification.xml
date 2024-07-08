@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<book xml:id="index" xmlns="http://docbook.org/ns/docbook" version="5.0">
+<book
+	xml:id="index" xmlns="http://docbook.org/ns/docbook"
+	version="5.0"
+	lang="en">
 	<bookinfo>
 		<title>Secret Service API Draft</title>
 		<releaseinfo>

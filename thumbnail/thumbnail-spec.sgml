@@ -1,6 +1,6 @@
 <!doctype article PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
 ]>
-<article id="index">
+<article id="index" lang="en">
   <artheader>
     <title>Thumbnail Managing Standard</title>
     <releaseinfo>Version 0.8.0</releaseinfo>

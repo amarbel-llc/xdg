@@ -4,7 +4,7 @@
   <!ENTITY dtd-version "1.0">
             	  ]>
 
-<article id="index">
+<article id="index" lang="en">
   <articleinfo>
     <title>Desktop Menu Specification</title>
     <releaseinfo>Version &version;</releaseinfo>

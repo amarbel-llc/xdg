@@ -4,7 +4,7 @@
   <!ENTITY dtd-version "0.5">
 				  ]>
 
-<article id="index">
+<article id="index" lang="en">
   <articleinfo>
     <title>Desktop Application Autostart Specification</title>
     <releaseinfo>Version &version;</releaseinfo>

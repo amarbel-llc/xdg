@@ -1,7 +1,9 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 ]>
-<book xml:id="index" xmlns="http://docbook.org/ns/docbook">
+<book xml:id="index"
+      xmlns="http://docbook.org/ns/docbook"
+      lang="en">
 	<bookinfo>
 		<title>Idle Inhibition Service Draft</title>
 		<releaseinfo>
