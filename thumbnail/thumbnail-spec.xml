@@ -1,7 +1,9 @@
-<!doctype article PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 ]>
 <article id="index" lang="en">
-  <artheader>
+  <articleinfo>
     <title>Thumbnail Managing Standard</title>
     <releaseinfo>Version 0.8.0</releaseinfo>
     <pubdate>May 2012</pubdate>
@@ -25,7 +27,7 @@
 	</affiliation>
       </author>
     </authorgroup>
-  </artheader>
+  </articleinfo>
 
   <sect1 id="history">
     <title>History</title>
@@ -147,6 +149,7 @@
     constitutes the first step to a better graphical desktop.
     </para>
   </sect1>
+
   <sect1 id="issues">
     <title>Issues To Solve</title>
     <para>
@@ -174,7 +177,8 @@
       All these things will be discussed in the next chapters and solutions
       will be presented.
     </para>
-   </sect1>
+  </sect1>
+
   <sect1 id="directory">
     <title>Thumbnail Directory</title>
 
@@ -197,8 +201,7 @@ $XDG_CACHE_HOME/thumbnails/normal
 $XDG_CACHE_HOME/thumbnails/large/
 $XDG_CACHE_HOME/thumbnails/x-large/
 $XDG_CACHE_HOME/thumbnails/xx-large/
-$XDG_CACHE_HOME/thumbnails/fail/
-       </programlisting>
+$XDG_CACHE_HOME/thumbnails/fail/</programlisting>
       <para> The meaning of the directories are as follows:</para>
       <itemizedlist>
 	<listitem>
@@ -237,7 +240,7 @@ $XDG_CACHE_HOME/thumbnails/fail/
      </sect2>
    </sect1>
    
-   <sect1 id="creation"> <title>Thumbnail Creation</title> 
+   <sect1 id="creation"> <title>Thumbnail Creation</title>
 
      <sect2><title>File format</title>
 
@@ -260,7 +263,7 @@ $XDG_CACHE_HOME/thumbnails/fail/
         other image metadata, such as white balance information.</para>
      </sect2>
 
-     <sect2 id="addinfos"><title>Thumbnail Attributes</title> 
+     <sect2 id="addinfos"><title>Thumbnail Attributes</title>
    
      <para>Beside the storage of the raw graphic data its often useful to
         provide further information about a file in its thumbnail. Especially
@@ -552,7 +555,7 @@ $XDG_CACHE_HOME/thumbnails/fail/
     hash string should give a fairly unique temporary name.</para></note>
     </sect2>
 
-    <sect2><title>Advantages Of This Approach</title> 
+    <sect2><title>Advantages Of This Approach</title>
 
       <para>Previously versions of this standard used a very different
       mechanism for storing thumbnails. But this one has some very important
@@ -608,13 +611,12 @@ $XDG_CACHE_HOME/thumbnails/fail/
         checks are only performed if the relevant key is present.
         If any check fails, the thumbnail can not be used and must be recreated.
         <example><title>Algorithm to check for modification.</title>
-         <programlisting>
+         <programlisting><![CDATA[
 if ((!thumb.isShared && !isSet(thumb.MTime)) ||
       (isSet(thumb.MTime) && file.mtime != thumb.MTime) ||
       (isSet(thumb.Size) && file.size != thumb.Size) {
    recreate_thumbnail();
-}
-         </programlisting>
+}]]></programlisting>
          </example></para>
 
       <para> Relying solely on modification times may fail in cases where
@@ -645,7 +647,7 @@ if ((!thumb.isShared && !isSet(thumb.MTime)) ||
      </sect1>
 
 
-  <sect1 id="failures"><title>Thumbnail Creation Failures</title> 
+  <sect1 id="failures"><title>Thumbnail Creation Failures</title>
     <para>Due to several reasons its possible that the generation of a thumbnail fails:
        <itemizedlist>
 	<listitem>
@@ -692,7 +694,7 @@ if ((!thumb.isShared && !isSet(thumb.MTime)) ||
        successfully generated ones.</para>
   </sect1>
 
-  <sect1 id="delete"><title>Deleting Thumbnails</title> 
+  <sect1 id="delete"><title>Deleting Thumbnails</title>
   
     <para> The deletion of a thumbnail is somehow tricky. A general rule is
      that a thumbnail should be deleted if the original file doesn't exist
@@ -829,7 +831,7 @@ if ((!thumb.isShared && !isSet(thumb.MTime)) ||
  
 	</sect1>
 
-  <sect1 id="conclusion"><title>Conclusion</title> 
+  <sect1 id="conclusion"><title>Conclusion</title>
 
    <para> The proposed way of dealing with file previews fulfiles the
      requirements of a file type independent preview cache. It is relative
@@ -841,7 +843,7 @@ if ((!thumb.isShared && !isSet(thumb.MTime)) ||
    new level of usability.</para>
   </sect1>
 
-  <sect1 id="thanks"><title>Thanks</title> 
+  <sect1 id="thanks"><title>Thanks</title>
    
    <para>The following people helped me to write this paper with a lot of
    suggestions, good ideas and constructive critism. They found serious bugs
@@ -878,6 +880,3 @@ if ((!thumb.isShared && !isSet(thumb.MTime)) ||
   </itemizedlist>
   </sect1>
 </article>
-
-
-
