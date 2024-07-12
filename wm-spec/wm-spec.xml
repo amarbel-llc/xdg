@@ -1,17 +1,33 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+
+<!ENTITY version    "1.5">
+<!ENTITY date       "2013-01-25">
 ]>
 <article id="index" lang="en">
 <articleinfo>
    <authorgroup>
+      <!--
       <corpauthor>
       <ulink url="http://www.freedesktop.org">X Desktop Group</ulink>
       </corpauthor>
-      </authorgroup>
-<title>Extended Window Manager Hints</title>
-<pubdate>29 November 2011</pubdate>
-<releaseinfo>1.5</releaseinfo>
+      -->
+
+      <author>
+        <firstname><ulink url="http://www.freedesktop.org">X Desktop Group</ulink></firstname>
+        <affiliation>
+        <address>
+          <email>freedesktop.org</email>
+        </address>
+        </affiliation>
+      </author>
+    </authorgroup>
+
+    <title>Extended Window Manager Hints</title>
+    <pubdate>29 November 2011</pubdate>
+    <releaseinfo>1.5</releaseinfo>
 </articleinfo>
+
 <sect1>
 	<title>Introduction</title>
 	<sect2>
