@@ -1,0 +1,143 @@
+# Index of Freedesktop.org Specifications
+
+[appstream]
+gitweb="https://github.com/ximion/appstream"
+externally_managed=true
+docs_url="https://www.freedesktop.org/software/appstream/docs/"
+
+[autostart]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+single_page = true
+
+[basedir]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+single_page = true
+
+[clipboard]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+location="clipboard/clipboard.xml"
+local=true
+single_page = true
+labels = ['X11']
+
+[clipboard-extensions]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+location="clipboard/clipboard-extensions.xml"
+local=true
+single_page = true
+labels = ['X11']
+
+[dbus]
+gitweb="https://gitlab.freedesktop.org/dbus/dbus"
+externally_managed=true
+docs_url="https://dbus.freedesktop.org/doc/dbus-specification.html"
+
+[desktop-entry]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+
+[icon-naming]
+gitweb="https://gitlab.freedesktop.org/xdg/default-icon-theme"
+location="spec/icon-naming-spec.xml"
+single_page = true
+
+[icon-theme]
+gitweb="https://gitlab.freedesktop.org/xdg/default-icon-theme"
+location="spec/icon-theme-spec.xml"
+single_page = true
+
+[idle-inhibit]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+location="idle-inhibit/specification.xml"
+
+[secret-service]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+location="secret-service/specification.xml"
+
+[mpris]
+gitweb="https://gitlab.freedesktop.org/mpris/mpris-spec"
+local=true  # it is embedded in this repo as a submodule
+project_root="mpris-spec"
+
+[mime-apps]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+location="mime-apps/mime-apps-spec.xml"
+
+[menu]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+location="menu/menu-spec.xml"
+
+[notification]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+location="notification/notification-spec.xml"
+
+[polkit]
+gitweb="https://gitlab.freedesktop.org/polkit/polkit"
+externally_managed=true
+docs_url="https://www.freedesktop.org/software/polkit/docs/latest/"
+
+[recent-files]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+location="recent-files/recent-file-spec.xml"
+
+[shared-mime-info]
+gitweb="https://gitlab.freedesktop.org/xdg/shared-mime-info"
+location="data/shared-mime-info-spec.xml"
+
+[sound-naming]
+gitweb="https://gitlab.freedesktop.org/xdg/sound-theme-spec"
+location="spec/sound-naming-spec.xml"
+single_page = true
+
+[sound-theme]
+gitweb="https://gitlab.freedesktop.org/xdg/sound-theme-spec"
+location="spec/sound-theme-spec.xml"
+
+[startup-notification]
+gitweb="https://gitlab.freedesktop.org/xdg/startup-notification"
+location="doc/startup-notification.xml"
+
+[systemtray]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+location="systemtray/systemtray-spec.xml"
+labels = ['X11']
+
+[thumbnail]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+location="thumbnail/thumbnail-spec.xml"
+
+[trash]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+single_page = true
+location="trash/trash-spec.xml"
+
+[wm]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+location="wm-spec/wm-spec.xml"
+labels = ['X11']
+
+[xembed]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+location="xembed/spec/xembed-spec.xml"
+labels = ['X11']
+
+[xsettings]
+gitweb="https://gitlab.freedesktop.org/xdg/xdg-specs"
+local=true
+make_commands = []
+location="xsettings/xsettings.xml"
+single_page = true
+labels = ['X11']

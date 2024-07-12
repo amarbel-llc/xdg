@@ -18,10 +18,10 @@
 
   <xsl:template name="date.and.revision.inner">
     <xsl:variable name="date">
-      <xsl:apply-templates select="(bookinfo/date | info/date |
-        articleinfo/date | ancestor::book/bookinfo/date |
+      <xsl:apply-templates select="(bookinfo/date | info/date | info/pubdate |
+        articleinfo/date | articleinfo/pubdate | ancestor::book/bookinfo/date |
         ancestor::set/setinfo/date | ancestor::book/info/date |
-        ancestor::set/info/date)[1]"/>
+        ancestor::set/info/date)[1]/text()"/>
     </xsl:variable>
 
     <xsl:variable name="version"

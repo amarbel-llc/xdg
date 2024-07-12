@@ -1,4 +1,4 @@
-### AppStream Documentation JS Directory
+### Freedesktop Documentation JS Directory
 
 You can place a minified copy of [Highlight.js](https://highlightjs.org/) in this
 directory to enable source-code highlighting in the documentation.

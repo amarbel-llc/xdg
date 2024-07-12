@@ -1,0 +1,543 @@
+# Revisions of Freedesktop.org Core Specifications
+
+#
+# Autostart Spec
+#
+
+[[autostart]]
+version = "latest"
+gitrev = "HEAD"
+
+[[autostart]]
+version = "0.5"
+gitrev = "1136f28da64d9589e4c9bafaaf36212cbb132e7f"
+
+
+#
+# Basedir Spec
+#
+
+[[basedir]]
+version = "latest"
+gitrev = "HEAD"
+
+[[basedir]]
+version = "0.8"
+gitrev = "373ecf4423f98384ec299268cc10c53afec418cf"
+
+[[basedir]]
+version = "0.7"
+gitrev = "e9be1b7628eb1db3e85be02a3a9f424448be1ec6"
+
+[[basedir]]
+version = "0.6"
+gitrev = "2c096d0c74244bd573027b217be3a69335a923f4"
+
+
+#
+# Clipboard
+#
+
+[[clipboard]]
+version = "1.0"
+gitrev = "HEAD"
+
+
+#
+# Clipboard Extensions
+#
+
+[[clipboard-extensions]]
+version = "1.0"
+gitrev = "HEAD"
+
+
+#
+# DBus
+#
+
+[[dbus]]
+type = "copy-file"
+version = "1.0"
+from = "doc/introspect.dtd"
+to = "1.0/introspect.dtd"
+gitrev = "7652304bff969afb3969603149bb385efe861fe8"
+
+
+#
+# Desktop Entry
+#
+
+[[desktop-entry]]
+version = "latest"
+gitrev = "HEAD"
+
+[[desktop-entry]]
+version = "1.5"
+gitrev = "d0589e04172ce640b3fe12694781060cd440a862"
+
+[[desktop-entry]]
+version = "1.4"
+gitrev = "31ba7763d443c34deb68a432d5d634207e0667a2"
+
+[[desktop-entry]]
+version = "1.3"
+gitrev = "839580ee24a06b578c2b635fd7400001f5bfc6f4"
+
+[[desktop-entry]]
+version = "1.2"
+gitrev = "7bec5bec45c13653eb614ce084ace93d9b5c8244"
+
+[[desktop-entry]]
+version = "1.1"
+gitrev = "e9be1b7628eb1db3e85be02a3a9f424448be1ec6"
+
+[[desktop-entry]]
+version = "1.0"
+gitrev = "e1775a202af19adf9c73e6954293e2e95f8f13a0"
+
+[[desktop-entry]]
+version = "0.9.8"
+gitrev = "7d249792235d0f3b69f833f89bef545a367f0b6b"
+
+[[desktop-entry]]
+version = "0.9.7"
+gitrev = "3e675b52041139085cc280dcdf2562e38cba8a31"
+
+[[desktop-entry]]
+version = "0.9.6"
+gitrev = "af1b346daa90b9cb88ec9e3b6d3ebd05942a73d7"
+
+[[desktop-entry]]
+version = "0.9.5"
+gitrev = "6855384d021d88557f80674798c584c15b547f36"
+
+# Invalid docbook for 0.9.4 @ b818b36ff0ee3c7f35df7b38db15a18b434f6375
+
+#[[desktop-entry]]
+#version = "0.9.3"
+#gitrev = "e7d2b4770815f8d8dcca934d3520d3fe55f86b09"
+#ext = "sgml"
+
+#[[desktop-entry]]
+#version = "0.9.2"
+#gitrev = "9c493d5fca5fcceca4e1bc0b2b2ba8a13c5eb12e"
+#ext = "sgml"
+
+
+#
+# Icon Naming
+#
+
+[[icon-naming]]
+version = "latest"
+gitrev = "HEAD"
+
+[[icon-naming]]
+version = "0.8.90"
+gitrev = "7c00fd40d00a03bcaff91cb34b9087c39eafda86"
+
+[[icon-naming]]
+version = "0.8"
+gitrev = "77bc8ba641ca24bf2e55292f7d31926d60295e5c"
+
+[[icon-naming]]
+version = "0.7"
+gitrev = "aba09c448ecc055f93a959a54497ef02be4ceab2"
+
+[[icon-naming]]
+version = "0.6"
+gitrev = "678139104048733b680c331d28ee09f6f16f386c"
+
+[[icon-naming]]
+version = "0.4"
+gitrev = "1dc55c9db340a7d0a9ac84e1e42735df311cdad5"
+
+
+#
+# Icon Theme
+#
+
+[[icon-theme]]
+version = "latest"
+gitrev = "HEAD"
+
+[[icon-theme]]
+version = "0.13"
+gitrev = "fca8fecff452ed188584f22e99e9b96458f697f9"
+
+[[icon-theme]]
+version = "0.12"
+gitrev = "7d2735da96abf7e1d2ce9a56e38240498e2f5e67"
+
+[[icon-theme]]
+version = "0.11"
+gitrev = "f09150e444382a18d147ef45afa9310e2e27c713"
+
+[[icon-theme]]
+version = "0.10"
+gitrev = "37f3118e81954b2171a333614901a0b74c295edc"
+
+[[icon-theme]]
+version = "0.9"
+gitrev = "400de5cb3e4f8046763ce816fb93a9ec287e6e39"
+
+[[icon-theme]]
+version = "0.8"
+gitrev = "61ce5bd0f09d5026b32f015f7f8d209524b85cf1"
+
+[[icon-theme]]
+version = "0.7"
+gitrev = "bd6077c5fc235d830d325a977770150bd2d71136"
+
+[[icon-theme]]
+version = "0.6"
+gitrev = "b1a891e95eb4f28da4e43fb6cb7a662bc0431529"
+
+
+#
+# Idle Inhibit
+#
+
+[[idle-inhibit]]
+version = "0.1"
+gitrev = "HEAD"
+
+#
+# Secret Service
+#
+
+[[secret-service]]
+version = "0.2"
+gitrev = "HEAD"
+
+#
+# MPRIS
+#
+
+[[mpris]]
+type = "copy-dir"
+version = "2.2"
+from = "mpris-spec/doc/spec/"
+to = "latest/"
+treat_as_spec = true
+
+
+#
+# MIME Apps
+#
+
+[[mime-apps]]
+version = "1.0.1"
+gitrev = "HEAD"
+
+[[mime-apps]]
+version = "1.0"
+gitrev = "1354abdb635b560f3c36373c8074ee7e5f63abab"
+
+
+#
+# Menu Spec
+#
+
+[[menu]]
+version = "1.1"
+gitrev = "HEAD"
+
+[[menu]]
+version = "1.0"
+gitrev = "647153fb87e5f642a7b7a3fdcec90961f36e89ab"
+
+# Export http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd
+# as per the specification
+[[menu]]
+type = "copy-file"
+version = "1.0"
+from = "menu/menu.dtd"
+to = "menu-1.0.dtd"
+export_root = "menu-spec"
+gitrev = "2403355e486ac6bc972fd150d38e3c44d086960a"
+
+[[menu]]
+version = "0.92"
+gitrev = "a61b06aa1aee4743f50024b0695795fe9568d929"
+
+[[menu]]
+version = "0.91"
+gitrev = "2403355e486ac6bc972fd150d38e3c44d086960a"
+
+[[menu]]
+version = "0.9"
+gitrev = "e1b6bf680dc4d021e7f2122841f812975a31985c"
+
+# Invalid docbooks:
+#menu-spec.xml			7d616706bba168427214848c6fbb77da5a30e04d		0.8
+#menu-spec.xml			28a4c60cb40502c01417bfdbd8a2e093eb4af2d9		0.7
+#menu-spec.xml			9f969d0e6625b2da24fb971ebd3cf7f913a1c5f1		0.6
+#menu-spec.xml			c15b9df59efac72ea80fb715bf2a9d7f7afd1bba		0.5
+#menu-spec.xml			c8475bef1d1f84afcc89c710b6b5b214f11a670f		0.4
+
+
+#
+# Notification Spec
+#
+
+[[notification]]
+version = "1.2"
+gitrev = "HEAD"
+
+
+#
+# PolicyKit
+#
+
+[[polkit]]
+type = "copy-file"
+version = "1.0"
+from = "data/policyconfig-1.dtd"
+to = "1.0/policyconfig.dtd"
+export_root = "PolicyKit"
+gitrev = "a2a805d269c55e2ca3d15a9a3c001aeb882a935e"
+
+
+#
+# Recent Files Spec
+#
+
+[[recent-files]]
+version = "0.3"
+gitrev = "HEAD"
+
+[[recent-files]]
+version = "0.2"
+gitrev = "2f2e0cc7ded9b2c8afe29281c621d8ee6c5def9a"
+
+
+#
+# Shared MIME Info Spec
+#
+
+[[shared-mime-info]]
+version = "0.22"
+gitrev = "HEAD"
+
+[[shared-mime-info]]
+version = "0.21"
+location="shared-mime-info-spec.xml"
+gitrev = "90eb7974ec4e8ea9ae7daa96b1d2f9a2b4fe9a20"
+
+[[shared-mime-info]]
+version = "0.20"
+location="shared-mime-info-spec.xml"
+gitrev = "2f909cff817a3f08d12321769173cac2de0da1b4"
+
+[[shared-mime-info]]
+version = "0.19"
+location="shared-mime-info-spec.xml"
+gitrev = "30349a8810143c1f808a74c96bceba87d48e8364"
+
+[[shared-mime-info]]
+version = "0.18"
+location="shared-mime-info-spec.xml"
+gitrev = "1bac8224c7439452a85693dc1a25f64d3a467e7d"
+
+[[shared-mime-info]]
+version = "0.17"
+location="shared-mime-info-spec.xml"
+gitrev = "83c091bbb4d32231b308864d227ada6106bc59a5"
+
+[[shared-mime-info]]
+version = "0.16"
+location="shared-mime-info-spec.xml"
+gitrev = "6c474418318c6c192abfe0f17f85209c65bfa1cf"
+
+[[shared-mime-info]]
+version = "0.15"
+location="shared-mime-info-spec.xml"
+gitrev = "7fab0df72e558a1d651e2557d52ac37b8d5020e9"
+
+[[shared-mime-info]]
+version = "0.14"
+location="shared-mime-info-spec.xml"
+gitrev = "0239582644c9edffa7edd4562ccb967d14d63e73"
+
+[[shared-mime-info]]
+version = "0.13"
+location="shared-mime-info-spec.xml"
+gitrev = "f364fdbba5bb7fe8b69e0294aa353845515b191e"
+
+[[shared-mime-info]]
+version = "0.12"
+location="shared-mime-info-spec.xml"
+gitrev = "ad3203089d3d029b5c18ebd4baa6f7991dd9bb22"
+
+[[shared-mime-info]]
+version = "0.11"
+location="shared-mime-info-spec.xml"
+gitrev = "92cca5e4cec157f252fd77b5ce23853974603906"
+
+[[shared-mime-info]]
+version = "0.10"
+location="shared-mime-info-spec.xml"
+gitrev = "dc2724f1d1b010a80b269ef21a1e613f55170777"
+
+[[shared-mime-info]]
+version = "0.9"
+location="shared-mime-info-spec.xml"
+gitrev = "e1359233cf0544509854178e8591ed39b5ccbcdf"
+
+[[shared-mime-info]]
+version = "0.8"
+location="shared-mime-info-spec.xml"
+gitrev = "7b25e407e6dc6cda94c2fb1f83b4ac4956a22fbf"
+
+[[shared-mime-info]]
+version = "0.7"
+location="shared-mime-info-spec.xml"
+gitrev = "d08ddd99abf32cbf770fecc43f950f4a8c7a4dc0"
+
+[[shared-mime-info]]
+version = "0.6"
+location="shared-mime-info-spec.xml"
+gitrev = "1dd7f6ce4610378b970674cfef61e1bda2389ba5"
+
+[[shared-mime-info]]
+version = "0.5"
+location="shared-mime-info-spec.xml"
+gitrev = "2e3dfe6117ec97da5493669a05459fdcac914e1c"
+
+[[shared-mime-info]]
+version = "0.4"
+location="shared-mime-info-spec.xml"
+gitrev = "bfd730e142344783603ac4cdf0467ccf2e2ff1fd"
+
+[[shared-mime-info]]
+version = "0.3"
+location="shared-mime-info-spec.xml"
+gitrev = "f6fa8bf89055da53e9323aca59d5337729178ade"
+
+[[shared-mime-info]]
+version = "0.2"
+location="shared-mime-info-spec.xml"
+gitrev = "e235408efaeec39b5be22d4f1d4218da64247d74"
+
+
+#
+# Sound Naming & Theme Specs
+#
+
+[[sound-naming]]
+version = "0.2"
+gitrev = "HEAD"
+
+[[sound-theme]]
+version = "0.2"
+gitrev = "HEAD"
+
+
+#
+# Startup Notification
+#
+
+[[startup-notification]]
+version = "0.2"
+gitrev = "HEAD"
+
+[[startup-notification]]
+version = "0.1"
+gitrev = "5a8a5326ffbba993f0456ec9e25a9589b81b0774"
+
+
+#
+# Systemtray
+#
+
+[[systemtray]]
+version = "0.4"
+gitrev = "HEAD"
+
+[[systemtray]]
+version = "0.3"
+gitrev = "cbe62e957475dba73d9d830dd755c76f8d3abd23"
+
+[[systemtray]]
+version = "0.2"
+gitrev = "87fb46a8631a8b509bb1b8026b88c7059f869ffd"
+
+[[systemtray]]
+version = "0.1"
+gitrev = "c8475bef1d1f84afcc89c710b6b5b214f11a670f"
+
+
+#
+# Thumbnail Spec
+#
+
+[[thumbnail]]
+version = "0.8.0"
+gitrev = "HEAD"
+
+# NOTE: Older SGML versions
+#[[thumbnail]]
+#version = "0.8.0" gitrev = "e9be1b7628eb1db3e85be02a3a9f424448be1ec6"
+#[[thumbnail]]
+#version = "0.7.0" gitrev = "27347f5fe2c06fe95f19a041941036a9f7413a08"
+
+
+#
+# Trash Spec
+#
+
+[[trash]]
+version = "1.0"
+gitrev = "HEAD"
+
+
+#
+# WM Spec
+#
+
+# TODO: Fix wm-spec/wm-spec.xml:20: parser error : Entity 'version' not defined & co
+[[wm]]
+version = "1.5"
+gitrev = "HEAD"
+
+[[wm]]
+version = "1.4"
+gitrev = "a95af55a102b0814e81095bda46a691068009c3c"
+
+[[wm]]
+version = "1.3"
+gitrev = "2eafacb23421d25147533a66a9eb8f0f4650a5e4"
+
+# SGML
+#git:xdg/xdg-specs:wm-spec/wm-spec.sgml			d10d819f39c4c7e878288192f14248536d9d4b96		1.2	wm-spec
+#git:xdg/xdg-specs:wm-spec/wm-spec.sgml			a6e9a0a88112e5f6ac7099530e5c732c7ec6fb7f		1.1	wm-spec
+# Invalid docbook:
+# b58352845cebc1d3b5754215a03ed047d1b28b11		1.0
+
+
+#
+# XEmbed Spec
+#
+
+[[xembed]]
+version = "0.6"
+gitrev = "HEAD"
+
+[[xembed]]
+version = "0.5"
+gitrev = "7bcfe52e21363072766a7ab428a9ab3e8552f6ff"
+
+
+#
+# XSettings Spec
+#
+
+[[xsettings]]
+version = "0.6"
+gitrev = "HEAD"
+
+[[xsettings]]
+version = "0.5"
+gitrev = "481e6fef65998dd376084532af878268cd45ae82"

@@ -2771,6 +2771,13 @@ h3 {
   text-align: left;
 }
 
+h4 {
+  font-size: 20px;
+  font-weight: normal;
+  padding: 20px 0 10px;
+  text-align: left;
+}
+
 .glosslist {
   margin: revert;
 }

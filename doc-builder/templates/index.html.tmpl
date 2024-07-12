@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Freedesktop.org Specifications</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+</head>
+<body class="single offline js-off">
+  <div id="_outer-wrap">
+    <div id="_white-bg">
+      <div id="_header">
+        <div id="_logo"><a href="https://specifications.freedesktop.org/"><img src="static/images/logo.svg" alt="Freedesktop Logo" /><span></span></a></div>
+        <div style="position: absolute; top: 30px; height: 38px; margin: 0; overflow: hidden; white-space: nowrap;  margin: 0 0 0 142px; vertical-align: middle;">
+          <span style="font-size: 34px; font-weight: lighter;">Freedesktop.org Specifications</span>
+        </div>
+        <div class="clearme"></div>
+      </div>
+    </div>
+    <div id="_content" class="documentation">
+      <div>
+        <h3 class="title" style="padding-top: 50px;"><span class="name">Freedesktop.org Specification Repository</span></h3>
+      </div>
+
+      <div xml:lang="en" class="article" id="index" lang="en">
+        <p>
+          Freedesktop.org is a project to work on interoperability and shared base technology for free-software desktop environments
+          for the X Window System (X11) and Wayland on Linux and other Unix-like operating systems.
+        </p>
+        <p>
+          We are not a formal standards body. The standards published on these pages are active or tentative (if marked as such)
+          specifications which desktop environments may implement to improve mutual compatibility, share code and
+          pool resources.
+        </p>
+        <p>
+          Please report issues found on this website via
+          <a href="https://gitlab.freedesktop.org/xdg/xdg-specs/issues/new?issue[assignee_id]=&amp;issue[milestone_id]=&amp;issue[title]=web-export:%20&amp;issue[description]=%0d%0dCC:%20@mak">xdg-specs at Freedesktop.org's GitLab instance</a>.
+        </p>
+
+        <div class="line"></div>
+
+        {% for spec in specifications %}
+          <h4>{{spec.name}}</h4>
+
+          {% if spec.info.externally_managed %}
+            <p style="margin: 0;">
+              ⇨ <a href="{{spec.info.docs_url}}">Documentation</a>
+            </p>
+          {% else %}
+            ⇨ <a href="{{spec.name}}-spec/latest">Latest Version</a>
+          {% endif %}
+          {% if spec.revs %}
+            <ul>
+            {% for rev in spec.revs %}
+              {% if rev.type == "copy-file" %}
+                <li>
+                  <a href="{{rev.export_root if rev.export_root else spec.name}}/{{rev.to}}">{{path_basename(rev.to)}}</a>
+                </li>
+              {% elif rev.type != "copy-dir" %}
+                {% if rev.version != "latest" %}
+                  <li>
+                    <a href="{{spec.name}}-spec/{{rev.version}}">version {{rev.version}}</a>
+                  </li>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          {% endif %}
+
+        {% endfor %}
+
+        <br/>
+        <div class="line"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="page-bottom"></div>
+  <div id="_footer-wrap">
+    <div id="_footer">
+      <p>© 2000-{{current_year}} Freedesktop.org
+      </p>
+    </div>
+  </div>
+</body>
+</html>
