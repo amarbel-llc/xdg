@@ -2057,6 +2057,11 @@
 		<entry>QT</entry>
 
 	      </row><row>
+		<entry>COSMIC</entry>
+		<entry>Application based on COSMIC libraries</entry>
+		<entry></entry>
+
+	      </row><row>
 		<entry>GNOME</entry>
 		<entry>Application based on GNOME libraries</entry>
 		<entry>GTK</entry>
@@ -2157,6 +2162,8 @@
           </thead>
           <tbody>
             <row>
+            <entry>COSMIC</entry><entry>COSMIC Desktop</entry>
+            </row><row>
               <entry>GNOME</entry><entry>GNOME Desktop</entry>
             </row><row>
               <entry>GNOME-Classic</entry><entry>GNOME Classic Desktop</entry>
