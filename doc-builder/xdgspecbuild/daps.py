@@ -129,7 +129,9 @@ class Daps:
             for fname in list(os.listdir(result_path)):
                 target_fname = os.path.join(output_dir, fname)
                 if os.path.exists(target_fname):
-                    if os.path.isdir(target_fname):
+                    if os.path.islink(target_fname):
+                        os.unlink(target_fname)
+                    elif os.path.isdir(target_fname):
                         shutil.rmtree(target_fname)
                     else:
                         os.remove(target_fname)

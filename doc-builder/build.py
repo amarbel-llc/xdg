@@ -165,10 +165,11 @@ class FdoSpecBuilder:
 
         # render DocBook XML to HTML
         print('\033[1m➤', 'Generating:', spec_name, spec_ver, '\033[0m')
+        spec_ver_out_dir = os.path.join(spec_out_root, spec_ver)
         ret = self._daps.make_html(
             spec_name,
             spec_files,
-            os.path.join(spec_out_root, spec_ver),
+            spec_ver_out_dir,
             book_filename=book_filename,
             single=spec_rev.get('single_page', spec_info.get('single_page', False)),
             validate_tables=False,
@@ -176,6 +177,16 @@ class FdoSpecBuilder:
         if not ret:
             print('ERROR:', 'Failed to generate HTML for', spec_name, spec_ver, file=sys.stderr)
             return False
+
+        spec_out_static_dir = os.path.join(spec_ver_out_dir, 'static')
+        if os.path.islink(spec_out_static_dir):
+            os.unlink(spec_out_static_dir)
+        elif os.path.exists(spec_out_static_dir):
+            shutil.rmtree(spec_out_static_dir)
+        os.symlink(
+            os.path.relpath(os.path.join(self._output_root, 'static'), spec_ver_out_dir),
+            spec_out_static_dir,
+        )
 
         # clean up if we executed a Makefile
         if makefile_run:
@@ -263,14 +274,6 @@ class FdoSpecBuilder:
     def process(self) -> bool:
         """Process all specifications and generate the website."""
 
-        self._templates.render_to_file(
-            'index.html',
-            os.path.join(self._output_root, 'index.html'),
-            specifications=self.spec_index,
-            current_year=datetime.datetime.now().year,
-            path_basename=os.path.basename,
-        )
-
         for spec_data in self.spec_index:
             spec_revs = spec_data['revs']
             spec_name = spec_data['name']
@@ -299,6 +302,23 @@ class FdoSpecBuilder:
                     raise ValueError(
                         'Encountered unknown revision type for "{}": {}'.format(spec_name, rev_type)
                     )
+
+        self._templates.render_to_file(
+            'index.html',
+            os.path.join(self._output_root, 'index.html'),
+            specifications=self.spec_index,
+            current_year=datetime.datetime.now().year,
+            path_basename=os.path.basename,
+        )
+        shutil.copytree(
+            os.path.join(self._daps.style_root, 'static'),
+            os.path.join(self._output_root, 'static'),
+            dirs_exist_ok=True,
+        )
+        favicon_fname = os.path.join(self._output_root, 'favicon.ico')
+        if os.path.exists(favicon_fname):
+            os.unlink(favicon_fname)
+        os.symlink('static/images/favicon.ico', favicon_fname)
 
         return True
 
