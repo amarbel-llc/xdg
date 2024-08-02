@@ -63,6 +63,7 @@ single_page = true
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "idle-inhibit/specification.xml"
+project_root="idle-inhibit"
 
 [menu]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"

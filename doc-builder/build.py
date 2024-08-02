@@ -48,7 +48,7 @@ class FdoSpecBuilder:
         if project_root:
             project_root = os.path.join(self._root_dir, project_root)
         else:
-            project_root = spec_location_root
+            project_root = os.path.normpath(os.path.join(self._root_dir, spec_location_root, '..'))
 
         # run Makefile if one exists to generate any files
         if os.path.exists(os.path.join(project_root, 'Makefile')):

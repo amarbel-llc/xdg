@@ -7,12 +7,7 @@
 
 import os
 import sys
-import shutil
-import datetime
-import subprocess
 from glob import glob
-
-import tomllib
 
 from xdgspecbuild import Daps, GitObject, SpecsRegistry, TemplateRenderer
 from xdgspecbuild.utils import print_section_title

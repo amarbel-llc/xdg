@@ -21,7 +21,7 @@ def temp_dir(basename=None):
     import tempfile
 
     if not basename:
-        basename = 'temp'
+        basename = 'temp-'
 
     current_dir = os.getcwd()
     temp_dir = tempfile.mkdtemp(prefix=f'_{basename}', dir=current_dir)
