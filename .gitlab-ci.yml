@@ -1,7 +1,7 @@
-image: fedora:30
+image: debian:stable
 
 variables:
-  DEPENDENCIES: xmlto docbook-utils libxslt make git discount python2-cheetah
+  DEPENDENCIES: python3 git make meson daps xmlto xsltproc python3-jinja2
   LANG: C.UTF-8
   GIT_SUBMODULE_STRATEGY: recursive
 
@@ -10,26 +10,33 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
     - if: $CI_PIPELINE_SOURCE == 'push'
 
-pages:
+stages:
+  - validate
+  - pages
+
+validate:
+  stage: validate
   before_script:
-    - rm -f /etc/rpm/macros.image-language-conf
-    - dnf update -y --nogpgcheck && dnf install -y --nogpgcheck $DEPENDENCIES
-    # Work-around xmlto and/or docbook stylesheets forcing ISO-8859-1
-    - sed -i s/ISO-8859-1/UTF-8/ /usr/share/sgml/docbook/xsl-stylesheets-1.79.2/*/*.xsl
+    - apt-get update -qq && apt-get install -yq eatmydata
+    - eatmydata apt-get install -yq $DEPENDENCIES
+
   script:
-    # Generate specs locally
-    - cd web-export
-    - LC_ALL=$LANG ./update.py
-    - cd ..
-    # That worked, clean up
-    - git clean -dxf
-    - rm -rf public/
-    # Generate specs for older versions
-    - cd web-export
-    - sed -i 's/USELOCALFILES = True/USELOCALFILES = False/' update.py
-    - LC_ALL=$LANG ./update.py
-    - cd ..
+    # Validate all local DocBook files
+    - ./validate.py
+
+pages:
+  stage: pages
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'push' && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+  before_script:
+    - apt-get update -qq && apt-get install -yq eatmydata
+    - eatmydata apt-get install -yq $DEPENDENCIES
+
+  script:
+    # Generate all HTML, for local & remote specs
+    - LC_ALL=$LANG ./doc-builder/build.py
 
   artifacts:
     paths:
-    - public
+      - public
