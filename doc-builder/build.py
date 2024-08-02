@@ -279,6 +279,11 @@ class FdoSpecBuilder:
             current_year=datetime.datetime.now().year,
             path_basename=os.path.basename,
         )
+        self._templates.render_to_file(
+            '404.html',
+            os.path.join(self._output_root, '404.html'),
+            current_year=datetime.datetime.now().year,
+        )
         shutil.copytree(
             os.path.join(self._daps.style_root, 'static'),
             os.path.join(self._output_root, 'static'),
