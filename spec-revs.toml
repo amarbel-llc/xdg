@@ -126,6 +126,24 @@ gitrev = "6855384d021d88557f80674798c584c15b547f36"
 
 
 #
+# Global Shortcuts
+#
+
+[[global-shortcuts]]
+version = "latest"
+gitrev = "HEAD"
+
+
+#
+# Help System
+#
+
+[[help-system]]
+version = "latest"
+gitrev = "HEAD"
+
+
+#
 # Icon Naming
 #
 
@@ -211,29 +229,14 @@ gitrev = "HEAD"
 version = "0.2"
 gitrev = "HEAD"
 
-#
-# MPRIS
-#
-
-[[mpris]]
-type = "copy-dir"
-version = "2.2"
-from = "mpris-spec/doc/spec/"
-to = "latest/"
-treat_as_spec = true
-
 
 #
-# MIME Apps
+# Shortcuts
 #
 
-[[mime-apps]]
-version = "1.0.1"
+[[shortcuts]]
+version = "latest"
 gitrev = "HEAD"
-
-[[mime-apps]]
-version = "1.0"
-gitrev = "1354abdb635b560f3c36373c8074ee7e5f63abab"
 
 
 #
@@ -276,6 +279,31 @@ gitrev = "e1b6bf680dc4d021e7f2122841f812975a31985c"
 #menu-spec.xml			9f969d0e6625b2da24fb971ebd3cf7f913a1c5f1		0.6
 #menu-spec.xml			c15b9df59efac72ea80fb715bf2a9d7f7afd1bba		0.5
 #menu-spec.xml			c8475bef1d1f84afcc89c710b6b5b214f11a670f		0.4
+
+
+#
+# MIME Apps
+#
+
+[[mime-apps]]
+version = "1.0.1"
+gitrev = "HEAD"
+
+[[mime-apps]]
+version = "1.0"
+gitrev = "1354abdb635b560f3c36373c8074ee7e5f63abab"
+
+
+#
+# MPRIS
+#
+
+[[mpris]]
+type = "copy-dir"
+version = "2.2"
+from = "mpris-spec/doc/spec/"
+to = "latest/"
+treat_as_spec = true
 
 
 #

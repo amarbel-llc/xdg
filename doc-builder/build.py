@@ -141,6 +141,7 @@ class FdoSpecBuilder:
             book_filename=book_filename,
             single=spec_rev.get('single_page', spec_info.get('single_page', False)),
             validate_tables=False,
+            draft=spec_info.get('draft', False),
         )
         if not ret:
             print('ERROR:', 'Failed to generate HTML for', spec_name, spec_ver, file=sys.stderr)

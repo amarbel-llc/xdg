@@ -42,6 +42,7 @@
 
         {% for spec in specifications %}
           <h4>{{spec.name}}</h4>
+          {% if spec.info.draft %}<span style="color: #ff3c00;">⚠️ DRAFT</span><br/>{% endif %}
 
           {% if spec.info.externally_managed %}
             <p style="margin: 0;">
