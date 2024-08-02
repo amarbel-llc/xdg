@@ -12,21 +12,16 @@ import datetime
 import subprocess
 from glob import glob
 
-import tomllib
-
-from xdgspecbuild import Daps, GitObject, TemplateRenderer
+from xdgspecbuild import Daps, GitObject, SpecsRegistry, TemplateRenderer
 from xdgspecbuild.utils import print_section_title
-
-# True if local files should be used, if False data will be downloaded from gitweb
-USELOCALFILES = True
 
 
 class FdoSpecBuilder:
     """Helper to build the Freedesktop specification website."""
 
     def __init__(self, script_dir):
-        self._root_dir = script_dir
-        self._output_root = os.path.join(script_dir, 'output')
+        self._root_dir = os.path.normpath(os.path.join(script_dir, '..'))
+        self._output_root = os.path.join(self._root_dir, 'public')
 
         self._templates = TemplateRenderer(os.path.join(script_dir, 'templates'))
         self._daps = Daps()
@@ -35,37 +30,12 @@ class FdoSpecBuilder:
         self.spec_index = []
 
     def load(self) -> bool:
-        # read the specification index
-        with open(os.path.join(self._root_dir, 'spec-index.toml'), 'rb') as f:
-            spec_info_index = tomllib.load(f)
-        with open(os.path.join(self._root_dir, 'spec-revs.toml'), 'rb') as f:
-            spec_revs = tomllib.load(f)
+        """Load the specification index and revisions."""
 
-        # sanity check
-        for spec_name in spec_revs.keys():
-            if spec_name not in spec_info_index:
-                print(
-                    'ERROR:',
-                    'Spec "{}" not found in spec-index.toml'.format(spec_name),
-                    file=sys.stderr,
-                )
-                return False
-        for spec_name, spec_info in spec_info_index.items():
-            if spec_info.get('externally_managed'):
-                continue
-            if spec_name not in spec_revs:
-                print(
-                    'ERROR:',
-                    'No version of spec "{}" found in spec-revs.toml'.format(spec_name),
-                    file=sys.stderr,
-                )
-                return False
-
-        # create our index
-        self.spec_index = []
-        for spec_name, spec_info in spec_info_index.items():
-            revs = spec_revs.get(spec_name, [])
-            self.spec_index.append(dict(name=spec_name, info=spec_info, revs=revs))
+        registry = SpecsRegistry(self._root_dir)
+        if not registry.load():
+            return False
+        self.spec_index = registry.spec_index
 
         return True
 
@@ -76,7 +46,7 @@ class FdoSpecBuilder:
 
         project_root = spec_info.get('project_root', None)
         if project_root:
-            project_root = os.path.join(self._root_dir, '..', project_root)
+            project_root = os.path.join(self._root_dir, project_root)
         else:
             project_root = spec_location_root
 
@@ -114,9 +84,7 @@ class FdoSpecBuilder:
 
         if spec_ver == 'latest' or spec_gitrev == 'HEAD':
             if spec_is_local:
-                spec_location_root = os.path.dirname(
-                    os.path.join(self._root_dir, '..', spec_location)
-                )
+                spec_location_root = os.path.dirname(os.path.join(self._root_dir, spec_location))
                 book_filename = os.path.basename(spec_location)
 
                 # build any specification data that we may need
@@ -211,7 +179,7 @@ class FdoSpecBuilder:
         os.makedirs(os.path.dirname(fname_dst), exist_ok=True)
 
         if spec_info.get('local', False) and file_gitrev == 'HEAD':
-            fname_src = os.path.dirname(os.path.join(self._root_dir, '..', file_from))
+            fname_src = os.path.dirname(os.path.join(self._root_dir, file_from))
             shutil.copy(fname_src, fname_dst)
             print('\033[1m➤', 'Copied:\033[0m', file_to, '(from {})'.format(file_from))
         else:
@@ -254,7 +222,7 @@ class FdoSpecBuilder:
         dir_dst = os.path.join(self._output_root, spec_dirname, dir_to)
         os.makedirs(os.path.dirname(dir_dst), exist_ok=True)
 
-        dir_src = os.path.dirname(os.path.join(self._root_dir, '..', dir_from))
+        dir_src = os.path.dirname(os.path.join(self._root_dir, dir_from))
         shutil.copytree(dir_src, dir_dst, dirs_exist_ok=True)
         print('\033[1m➤', 'Copied:\033[0m', dir_to, '(from {})'.format(dir_from))
 
@@ -334,7 +302,7 @@ def run(script_dir, args):
 
 
 if __name__ == '__main__':
-    thisfile = __file__
+    thisfile = os.path.realpath(__file__)
     if not os.path.isabs(thisfile):
         thisfile = os.path.normpath(os.path.join(os.getcwd(), thisfile))
     thisdir = os.path.normpath(os.path.join(os.path.dirname(thisfile)))

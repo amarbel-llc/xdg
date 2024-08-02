@@ -20,9 +20,11 @@ HASH = 'md5'
 def temp_dir(basename=None):
     import tempfile
 
-    current_dir = os.path.join(os.getcwd(), 'tmp')
-    os.makedirs(current_dir, exist_ok=True)
-    temp_dir = tempfile.mkdtemp(dir=current_dir)
+    if not basename:
+        basename = 'temp'
+
+    current_dir = os.getcwd()
+    temp_dir = tempfile.mkdtemp(prefix=f'_{basename}', dir=current_dir)
     try:
         yield temp_dir
     finally:
@@ -56,11 +58,11 @@ class TemplateRenderer:
         self._env = Environment(loader=FileSystemLoader(template_dir))
 
     def render(self, template_name, **kwargs):
-        template = self._env.get_template(template_name + '.tmpl')
+        template = self._env.get_template(template_name)
         return template.render(**kwargs)
 
     def render_to_file(self, template_name, output_fname, **kwargs):
-        template = self._env.get_template(template_name + '.tmpl')
+        template = self._env.get_template(template_name)
         result = template.render(**kwargs)
         with open(output_fname, mode='w', encoding='utf-8') as f:
             f.write(result)

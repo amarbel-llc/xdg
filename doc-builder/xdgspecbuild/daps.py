@@ -41,20 +41,21 @@ class Daps:
 
             yield xml_target
 
-    def validate(self, xml_files, validate_tables=True) -> bool:
+    def validate(self, xml_files, book_filename: str | None = None, validate_tables=True) -> bool:
         with self._make_daps_workspace(xml_files) as dws:
+            if not book_filename:
+                book_filename = xml_files[0]
             # validate
-            for fname in xml_files:
-                fname_base = os.path.basename(fname)
-                print('➤', 'Validating:', fname_base)
+            fname_base = os.path.basename(book_filename)
+            print('➤', 'Validating:', fname_base)
 
-                cmd = [self._daps_exe, '-m', os.path.join(dws, fname_base), 'validate']
-                if not validate_tables:
-                    cmd.append('--not-validate-tables')
+            cmd = [self._daps_exe, '-m', os.path.join(dws, fname_base), 'validate']
+            if not validate_tables:
+                cmd.append('--not-validate-tables')
 
-                res = subprocess.run(cmd, check=False)
-                if res.returncode != 0:
-                    return False
+            res = subprocess.run(cmd, check=False)
+            if res.returncode != 0:
+                return False
         return True
 
     def make_html(
