@@ -244,8 +244,12 @@ gitrev = "HEAD"
 #
 
 [[menu]]
-version = "1.1"
+version = "latest"
 gitrev = "HEAD"
+
+[[menu]]
+version = "1.1"
+gitrev = "7860a2370969f6d0c970c0e9db73e06049d96413"
 
 [[menu]]
 version = "1.0"

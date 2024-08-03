@@ -69,6 +69,10 @@ project_root="idle-inhibit"
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "menu/menu-spec.xml"
+redirects = [
+    ["apa.html", "category-registry.html"],
+    ["apb.html", "onlyshowin-registry.html"],
+]
 
 [mime-apps]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"

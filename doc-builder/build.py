@@ -147,6 +147,11 @@ class FdoSpecBuilder:
             print('ERROR:', 'Failed to generate HTML for', spec_name, spec_ver, file=sys.stderr)
             return False
 
+        for redir in spec_info.get('redirects', []):
+            self._templates.render_to_file(
+                'simple-redirect.html', os.path.join(spec_ver_out_dir, redir[0]), url=redir[1]
+            )
+
         spec_out_static_dir = os.path.join(spec_ver_out_dir, 'static')
         if os.path.islink(spec_out_static_dir):
             os.unlink(spec_out_static_dir)

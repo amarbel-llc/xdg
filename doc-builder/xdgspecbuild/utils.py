@@ -66,6 +66,7 @@ class TemplateRenderer:
         result = template.render(**kwargs)
         with open(output_fname, mode='w', encoding='utf-8') as f:
             f.write(result)
+            f.write('\n')
 
 
 def print_textbox(title, tl, hline, tr, vline, bl, br):
