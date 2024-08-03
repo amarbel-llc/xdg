@@ -62,6 +62,7 @@ single_page = true
 [idle-inhibit]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
+single_page = true
 location = "idle-inhibit/specification.xml"
 project_root="idle-inhibit"
 
@@ -97,6 +98,7 @@ docs_url="https://www.freedesktop.org/software/polkit/docs/latest/"
 [recent-files]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
+single_page = true
 location = "recent-files/recent-file-spec.xml"
 
 [secret-service]
