@@ -266,7 +266,7 @@
       </xsl:choose>
     </xsl:variable>
 
-    <xsl:if test="$generate.toolbar != 0 and $rootelementname != 'article'">
+    <xsl:if test="$generate.toolbar != 0">
       <div id="_toolbar-wrap">
         <div id="_toolbar">
           <xsl:choose>

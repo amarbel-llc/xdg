@@ -71,12 +71,10 @@
   <!-- Specifies the CSS style attribute that should be added to admonitions -->
   <xsl:param name="admon.style" select="''"/>
 
-
-    <xsl:param name="funcsynopsis.style">ansi</xsl:param>
-    <xsl:param name="funcsynopsis.decoration">1</xsl:param>
-    <xsl:param name="refentry.generate.name">0</xsl:param>
-    <xsl:param name="refentry.generate.title">1</xsl:param>
-
+  <xsl:param name="funcsynopsis.style">ansi</xsl:param>
+  <xsl:param name="funcsynopsis.decoration">1</xsl:param>
+  <xsl:param name="refentry.generate.name">0</xsl:param>
+  <xsl:param name="refentry.generate.title">1</xsl:param>
 
  <xsl:param name="chunker.output.method">
    <xsl:choose>
@@ -115,7 +113,7 @@ set       toc,title
   <xsl:param name="section.label.includes.component.label" select="1"/>
 
 <!-- 7. HTML ==================================================== -->
-  <xsl:param name="css.decoration" select="1"/>
+  <xsl:param name="css.decoration" select="0"/>
   <xsl:param name="docbook.css.link" select="0"/>
 
   <!-- To add e.g. brand specific additional stylesheets -->
@@ -175,7 +173,7 @@ table before
 procedure before
 task before
   </xsl:param>
- 
+
   <xsl:param name="runinhead.default.title.end.punct">:</xsl:param>
 
   <!-- From the DocBook XHMTL stylesheet's "formal.xsl" -->
