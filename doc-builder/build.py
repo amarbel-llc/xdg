@@ -15,6 +15,9 @@ from glob import glob
 from xdgspecbuild import Daps, GitObject, SpecsRegistry, TemplateRenderer
 from xdgspecbuild.utils import print_section_title
 
+EXTRA_CSS = [['/usr/share/javascript/highlight.js/styles/routeros.css', 'highlight.css']]
+EXTRA_JS = [['/usr/share/javascript/highlight.js/highlight.min.js', 'highlight.min.js']]
+
 
 class FdoSpecBuilder:
     """Helper to build the Freedesktop specification website."""
@@ -298,6 +301,18 @@ class FdoSpecBuilder:
         if os.path.exists(favicon_fname):
             os.unlink(favicon_fname)
         os.symlink('static/images/favicon.ico', favicon_fname)
+
+        # copy extra CSS and JavaScript if it is available
+        for css_fname in EXTRA_CSS:
+            if not os.path.exists(css_fname[0]):
+                continue
+            shutil.copy(
+                css_fname[0], os.path.join(self._output_root, 'static', 'css', css_fname[1])
+            )
+        for js_fname in EXTRA_JS:
+            if not os.path.exists(js_fname[0]):
+                continue
+            shutil.copy(js_fname[0], os.path.join(self._output_root, 'static', 'js', js_fname[1]))
 
         return True
 
