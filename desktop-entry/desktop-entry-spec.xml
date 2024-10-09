@@ -998,8 +998,8 @@
     </para>
     <para>
       Field codes must not be used inside a quoted argument, the result of
-      field code expansion inside a quoted argument is undefined. The %F and
-      %U field codes may only be used as an argument on their own.
+      field code expansion inside a quoted argument is undefined. The %F, %U
+      and %i field codes may only be used as an argument on their own.
     </para>
   </sect1>
   <sect1 id="dbus">
