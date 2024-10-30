@@ -64,6 +64,14 @@ to = "1.0/introspect.dtd"
 # tagged commit dbus-1.14.0
 gitrev = "6fd1509ba3677ac434176882fbf1ca5d7603651e"
 
+[[dbus]]
+type = "copy-file"
+version = "1.0"
+from = "doc/busconfig.dtd"
+to = "1.0/busconfig.dtd"
+# tagged commit dbus-1.14.0
+gitrev = "6fd1509ba3677ac434176882fbf1ca5d7603651e"
+
 
 #
 # Desktop Entry
