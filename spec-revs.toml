@@ -61,7 +61,8 @@ type = "copy-file"
 version = "1.0"
 from = "doc/introspect.dtd"
 to = "1.0/introspect.dtd"
-gitrev = "7652304bff969afb3969603149bb385efe861fe8"
+# tagged commit dbus-1.14.0
+gitrev = "6fd1509ba3677ac434176882fbf1ca5d7603651e"
 
 
 #
