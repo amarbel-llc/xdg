@@ -324,8 +324,12 @@ treat_as_spec = true
 #
 
 [[notification]]
-version = "1.2"
+version = "1.3"
 gitrev = "HEAD"
+
+[[notification]]
+version = "1.2"
+gitrev = "68364a168762b64d4b82a20ba367579a99791e80"
 
 
 #
