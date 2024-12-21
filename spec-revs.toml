@@ -519,8 +519,12 @@ gitrev = "c8475bef1d1f84afcc89c710b6b5b214f11a670f"
 #
 
 [[thumbnail]]
-version = "0.8.0"
+version = "latest"
 gitrev = "HEAD"
+
+[[thumbnail]]
+version = "0.8.0"
+gitrev = "7fb436b0ca46cb0e9afc92e1b242f3f91114f62d"
 
 # NOTE: Older SGML versions
 #[[thumbnail]]
