@@ -37,6 +37,23 @@ docs_url="https://dbus.freedesktop.org/doc/dbus-specification.html"
 [desktop-entry]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
+redirects = [
+    ["ar01s02.html", "file-naming.html"],
+    ["ar01s03.html", "basic-format.html"],
+    ["ar01s04.html", "value-types.html"],
+    ["ar01s05.html", "localized-keys.html"],
+    ["ar01s06.html", "recognized-keys.html"],
+    ["ar01s07.html", "exec-variables.html"],
+    ["ar01s08.html", "dbus.html"],
+    ["ar01s09.html", "interfaces.html"],
+    ["ar01s10.html", "mime-types.html"],
+    ["ar01s11.html", "extra-actions.html"],
+    ["ar01s12.html", "extending.html"],
+    ["apa.html", "example.html"],
+    ["apb.html", "kde-items.html"],
+    ["apc.html", "deprecated-items.html"],
+    ["apd.html", "legacy-mixed.html"],
+]
 
 [global-shortcuts]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
@@ -71,8 +88,22 @@ gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "menu/menu-spec.xml"
 redirects = [
+    ["ar01s02.html", "paths.html"],
+    ["ar01s03.html", "desktop-entry-extensions.html"],
+    ["ar01s04.html", "menu-file-format.html"],
+    ["ar01s05.html", "merge-algorithm.html"],
+    ["ar01s06.html", "query-algorithm.html"],
+    ["ar01s07.html", "legacy-hierarchies.html"],
+    ["ar01s08.html", "example.html"],
     ["apa.html", "category-registry.html"],
+    ["apas02.html", "additional-category-registry.html"],
+    ["apas03.html", "reserved-category-registry.html"],
     ["apb.html", "onlyshowin-registry.html"],
+    ["apc.html", "third-party-howto.html"],
+    ["apcs02.html", "locations.html"],
+    ["apcs03.html", "menu-add-example.html"],
+    ["apcs04.html", "compatibility.html"],
+    ["apd.html", "implementation-notes.html"],
 ]
 
 [mime-apps]
@@ -89,6 +120,16 @@ project_root="mpris-spec"
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "notification/notification-spec.xml"
+redirects = [
+    ["ar01s02.html", "basic-design.html"],
+    ["ar01s03.html", "backwards-compat.html"],
+    ["ar01s04.html", "markup.html"],
+    ["ar01s05.html", "icons-and-images.html"],
+    ["ar01s06.html", "categories.html"],
+    ["ar01s07.html", "urgency-levels.html"],
+    ["ar01s08.html", "hints.html"],
+    ["ar01s09.html", "protocol.html"],
+]
 
 [polkit]
 gitweb = "https://gitlab.freedesktop.org/polkit/polkit"
@@ -124,6 +165,17 @@ single_page = true
 [sound-theme]
 gitweb = "https://gitlab.freedesktop.org/xdg/sound-theme-spec"
 location = "spec/sound-theme-spec.xml"
+redirects = [
+    ["ar01s02.html", "definitions.html"],
+    ["ar01s03.html", "directory_layout.html"],
+    ["ar01s04.html", "file_formats.html"],
+    ["ar01s05.html", "sound_lookup.html"],
+    ["ar01s06.html", "example.html"],
+    ["ar01s07.html", "install_sounds.html"],
+    ["ar01s08.html", "implementation_notes.html"],
+    ["ar01s09.html", "background.html"],
+    ["apa.html", "changes.html"],
+]
 
 [startup-notification]
 gitweb = "https://gitlab.freedesktop.org/xdg/startup-notification"
