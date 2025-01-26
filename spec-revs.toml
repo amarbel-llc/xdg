@@ -498,12 +498,8 @@ gitrev = "5a8a5326ffbba993f0456ec9e25a9589b81b0774"
 #
 
 [[systemtray]]
-version = "0.4"
-gitrev = "HEAD"
-
-[[systemtray]]
 version = "0.3"
-gitrev = "cbe62e957475dba73d9d830dd755c76f8d3abd23"
+gitrev = "HEAD"
 
 [[systemtray]]
 version = "0.2"
@@ -571,12 +567,8 @@ gitrev = "2eafacb23421d25147533a66a9eb8f0f4650a5e4"
 #
 
 [[xembed]]
-version = "0.6"
-gitrev = "HEAD"
-
-[[xembed]]
 version = "0.5"
-gitrev = "7bcfe52e21363072766a7ab428a9ab3e8552f6ff"
+gitrev = "HEAD"
 
 
 #
@@ -584,9 +576,5 @@ gitrev = "7bcfe52e21363072766a7ab428a9ab3e8552f6ff"
 #
 
 [[xsettings]]
-version = "0.6"
-gitrev = "HEAD"
-
-[[xsettings]]
 version = "0.5"
-gitrev = "481e6fef65998dd376084532af878268cd45ae82"
+gitrev = "HEAD"
