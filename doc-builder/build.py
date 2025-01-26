@@ -134,36 +134,65 @@ class FdoSpecBuilder:
             'simple-redirect.html', spec_versioned_out_basename + '.html', url=spec_ver + '/'
         )
 
-        # render DocBook XML to HTML
+        # render DocBook XML to HTML, default style
         print('\033[1m➤', 'Generating:', spec_name, spec_ver, '\033[0m')
+        spec_out_dirs = []
         spec_ver_out_dir = os.path.join(spec_out_root, spec_ver)
+        spec_out_dirs.append(spec_ver_out_dir)
+        default_single_page = spec_rev.get('single_page', spec_info.get('single_page', False))
         ret = self._daps.make_html(
             spec_name,
             spec_files,
             spec_ver_out_dir,
             book_filename=book_filename,
-            single=spec_rev.get('single_page', spec_info.get('single_page', False)),
+            single=default_single_page,
             validate_tables=False,
             draft=spec_info.get('draft', False),
         )
         if not ret:
             print('ERROR:', 'Failed to generate HTML for', spec_name, spec_ver, file=sys.stderr)
             return False
-
         for redir in spec_info.get('redirects', []):
             self._templates.render_to_file(
                 'simple-redirect.html', os.path.join(spec_ver_out_dir, redir[0]), url=redir[1]
             )
 
-        spec_out_static_dir = os.path.join(spec_ver_out_dir, 'static')
-        if os.path.islink(spec_out_static_dir):
-            os.unlink(spec_out_static_dir)
-        elif os.path.exists(spec_out_static_dir):
-            shutil.rmtree(spec_out_static_dir)
-        os.symlink(
-            os.path.relpath(os.path.join(self._output_root, 'static'), spec_ver_out_dir),
-            spec_out_static_dir,
-        )
+        if spec_ver == 'latest' and not default_single_page:
+            # for the latest version of a spec that isn't single-page, we
+            # create a single-page version for user convenience and backwards
+            # compatibility with the older fd.o website layout
+            spec_single_out_dir = os.path.join(spec_out_root, spec_ver + '-single')
+            spec_out_dirs.append(spec_single_out_dir)
+            ret = self._daps.make_html(
+                spec_name,
+                spec_files,
+                spec_single_out_dir,
+                book_filename=book_filename,
+                single=True,
+                validate_tables=False,
+                draft=spec_info.get('draft', False),
+            )
+            if not ret:
+                print(
+                    'ERROR:',
+                    'Failed to generate single-page HTML for',
+                    spec_name,
+                    spec_ver,
+                    file=sys.stderr,
+                )
+                return False
+
+        # deduplicate static files
+        for spec_out_dir in spec_out_dirs:
+            spec_out_static_dir = os.path.join(spec_out_dir, 'static')
+            if os.path.islink(spec_out_static_dir):
+                os.unlink(spec_out_static_dir)
+            elif os.path.exists(spec_out_static_dir):
+                shutil.rmtree(spec_out_static_dir)
+            os.symlink(
+                os.path.relpath(os.path.join(self._output_root, 'static'), spec_out_dir),
+                spec_out_static_dir,
+            )
 
         # clean up if we executed a Makefile
         if makefile_run:
