@@ -85,7 +85,8 @@ class FdoSpecBuilder:
         )
         book_filename = spec_name + '-spec.xml'
 
-        if spec_ver == 'latest' or spec_gitrev == 'HEAD':
+        is_latest_spec = spec_ver == 'latest' or spec_gitrev == 'HEAD'
+        if is_latest_spec:
             if spec_is_local:
                 spec_location_root = os.path.dirname(os.path.join(self._root_dir, spec_location))
                 book_filename = os.path.basename(spec_location)
@@ -157,11 +158,11 @@ class FdoSpecBuilder:
                 'simple-redirect.html', os.path.join(spec_ver_out_dir, redir[0]), url=redir[1]
             )
 
-        if spec_ver == 'latest' and not default_single_page:
+        if is_latest_spec and not default_single_page:
             # for the latest version of a spec that isn't single-page, we
             # create a single-page version for user convenience and backwards
             # compatibility with the older fd.o website layout
-            spec_single_out_dir = os.path.join(spec_out_root, spec_ver + '-single')
+            spec_single_out_dir = os.path.join(spec_out_root, 'latest-single')
             spec_out_dirs.append(spec_single_out_dir)
             ret = self._daps.make_html(
                 spec_name,
