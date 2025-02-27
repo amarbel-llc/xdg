@@ -195,8 +195,7 @@ location = "thumbnail/thumbnail-spec.xml"
 [trash]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
-single_page = true
-location = "trash/trash-spec.xml"
+format = "sphinx"
 
 [wm]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
