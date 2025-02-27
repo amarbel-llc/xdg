@@ -1,4 +1,4 @@
-image: debian:stable
+image: debian:trixie
 
 variables:
   DEPENDENCIES: python3 git make meson daps xmlto xsltproc python3-jinja2 libjs-highlight.js python3-sphinx

@@ -253,7 +253,7 @@ class FdoSpecBuilder:
             sphinx_make_html(spec_source_root, spec_ver_out_dir)
         except Exception:
             print('ERROR:', 'Failed to generate HTML for', spec_name, spec_ver, file=sys.stderr)
-            traceback.format_exc()
+            print(traceback.format_exc(), file=sys.stderr)
             return False
         for redir in spec_info.get('redirects', []):
             self._templates.render_to_file(
