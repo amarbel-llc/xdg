@@ -37,6 +37,7 @@ class SpecValidator:
             spec_revs = spec_data['revs']
             spec_name = spec_data['name']
             spec_info = spec_data['info']
+            spec_format = spec_info.get('format', 'docbook')
 
             if spec_info.get('externally_managed'):
                 print('Skip: "{}" (externally managed)'.format(spec_name))
@@ -59,6 +60,13 @@ class SpecValidator:
                 if spec_rev.get('gitrev') != 'HEAD':
                     continue
                 if rev_type != 'spec':
+                    continue
+                if spec_format != 'docbook':
+                    print(
+                        'Skip validating "{}" (can\'t validate "{}" documents yet)'.format(
+                            spec_name, spec_format
+                        )
+                    )
                     continue
 
                 spec_location = spec_rev.get(
