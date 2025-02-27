@@ -9,10 +9,11 @@ import os
 import sys
 import shutil
 import datetime
+import traceback
 import subprocess
 from glob import glob
 
-from xdgspecbuild import Daps, GitObject, SpecsRegistry, TemplateRenderer
+from xdgspecbuild import Daps, GitObject, SpecsRegistry, TemplateRenderer, sphinx_make_html
 from xdgspecbuild.utils import print_section_title
 
 EXTRA_CSS = [['/usr/share/javascript/highlight.js/styles/routeros.css', 'highlight.css']]
@@ -66,7 +67,7 @@ class FdoSpecBuilder:
             return True
         return False
 
-    def _create_spec_html(self, spec_name: str, spec_info, spec_rev) -> bool:
+    def _create_spec_html_docbook(self, spec_name: str, spec_info, spec_rev) -> bool:
         """Render HTML page from a DocBook specification."""
 
         spec_ver = spec_rev.get('version')
@@ -201,6 +202,70 @@ class FdoSpecBuilder:
 
         return True
 
+    def _create_spec_html_sphinx(self, spec_name: str, spec_info, spec_rev) -> bool:
+        """Render HTML pages from reST text using Sphinx."""
+
+        spec_ver = spec_rev.get('version')
+        spec_gitrev = spec_rev.get('gitrev')
+        makefile_run = False
+
+        spec_out_root = os.path.join(self._output_root, spec_name + '-spec')
+        os.makedirs(spec_out_root, exist_ok=True)
+
+        spec_versioned_out_basename = os.path.join(
+            spec_out_root, '{}-spec-{}'.format(spec_name, spec_ver)
+        )
+
+        spec_source_basedir = spec_rev.get(
+            'location', spec_info.get('location', '{0}/'.format(spec_name))
+        )
+
+        is_latest_spec = spec_ver == 'latest' or spec_gitrev == 'HEAD'
+        if is_latest_spec:
+            # build any specification data that we may need
+            makefile_run = self._run_makefile(spec_name, spec_info, spec_rev)
+
+            self._templates.render_to_file(
+                'simple-redirect.html', os.path.join(spec_out_root, 'index.html'), url='latest/'
+            )
+            if spec_ver != 'latest':
+                latest_symlink = os.path.join(spec_out_root, 'latest')
+                if os.path.islink(latest_symlink):
+                    os.unlink(latest_symlink)
+                os.symlink(spec_ver, latest_symlink)
+
+        else:
+            spec_source_basedir = os.path.join(spec_source_basedir, spec_ver)
+
+        spec_source_root = os.path.dirname(os.path.join(self._root_dir, spec_source_basedir))
+
+        # create redirect to keep older links working
+        self._templates.render_to_file(
+            'simple-redirect.html', spec_versioned_out_basename + '.html', url=spec_ver + '/'
+        )
+
+        # render reST to HTML
+        print('\033[1m➤', 'Generating:', spec_name, spec_ver, '\033[0m')
+        spec_out_dirs = []
+        spec_ver_out_dir = os.path.join(spec_out_root, spec_ver)
+        spec_out_dirs.append(spec_ver_out_dir)
+        try:
+            sphinx_make_html(spec_source_root, spec_ver_out_dir)
+        except Exception:
+            print('ERROR:', 'Failed to generate HTML for', spec_name, spec_ver, file=sys.stderr)
+            traceback.format_exc()
+            return False
+        for redir in spec_info.get('redirects', []):
+            self._templates.render_to_file(
+                'simple-redirect.html', os.path.join(spec_ver_out_dir, redir[0]), url=redir[1]
+            )
+
+        # clean up if we executed a Makefile
+        if makefile_run:
+            self._run_makefile(spec_name, spec_info, spec_rev, command='clean')
+
+        return True
+
     def _copy_spec_aux_data(self, spec_name: str, spec_info, file_rev) -> bool:
         """Copy some auxiliary data needed for a specification to a specific location."""
 
@@ -285,6 +350,7 @@ class FdoSpecBuilder:
             spec_revs = spec_data['revs']
             spec_name = spec_data['name']
             spec_info = spec_data['info']
+            spec_format = spec_info.get('format', 'docbook')
 
             if not spec_revs:
                 continue
@@ -297,14 +363,22 @@ class FdoSpecBuilder:
                     raise ValueError('No version specified for spec "{}"'.format(spec_name))
 
                 if rev_type == 'spec':
-                    if not self._create_spec_html(spec_name, spec_info, spec_rev):
+                    if spec_format == 'sphinx':
+                        ret = self._create_spec_html_sphinx(spec_name, spec_info, spec_rev)
+
+                    else:
+                        ret = self._create_spec_html_docbook(spec_name, spec_info, spec_rev)
+                    if not ret:
                         return False
+
                 elif rev_type == 'copy-file':
                     if not self._copy_spec_aux_data(spec_name, spec_info, spec_rev):
                         return False
+
                 elif rev_type == 'copy-dir':
                     if not self._copy_spec_data_dir(spec_name, spec_info, spec_rev):
                         return False
+
                 else:
                     raise ValueError(
                         'Encountered unknown revision type for "{}": {}'.format(spec_name, rev_type)

@@ -27,6 +27,16 @@ a {
   text-decoration: none;
 }
 
+a.footnote-reference {
+    font-size:small;
+    vertical-align:super
+}
+
+a.citation {
+    font-size:small;
+    vertical-align:super
+}
+
 small {
   font-size: smaller;
 }
@@ -1176,8 +1186,8 @@ button::-moz-focus-inner {
 
 .documentation a[id] {
   position: relative;
-  top: -33px;
-  display: block;
+  /*top: -33px;
+  display: block;*/
   width: 0;
   height: 0;
 }

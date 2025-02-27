@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{%- macro script() %}
+    {%- for js in script_files %}
+    {{ js_tag(js) }}
+    {%- endfor %}
+{%- endmacro %}
+
+{%- macro css() %}
+    {%- for css in css_files %}
+      {%- if css|attr("filename") %}
+    {{ css_tag(css) }}
+      {%- else %}
+    <link rel="stylesheet" href="{{ pathto(css, 1)|e }}" type="text/css" />
+      {%- endif %}
+    {%- endfor %}
+{%- endmacro %}
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>{{ project }} - {{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  {%- block css %}
+  {{- css() }}
+  {%- endblock %}
+  {%- if not embedded %}
+  {%- block scripts %}
+  {{- script() }}
+  {%- endblock %}
+  {%- if pageurl %}
+  <link rel="canonical" href="{{ pageurl|e }}" />
+  {%- endif %}
+  {%- if favicon_url %}
+  <link rel="icon" type="image/x-icon" href="{{ pathto('_static/images/favicon.ico', 1) }}">
+  {%- endif %}
+  {%- endif %}
+  <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/style.css', 1) }}" />
+
+  {% block extrahead %}{% endblock %}
+</head>
+<body class="single offline js-off">
+  <div id="_outer-wrap">
+    <div id="_white-bg">
+      <div id="_header">
+        <div id="_logo">
+          <a href="https://specifications.freedesktop.org/">
+            <img src="{{ pathto('_static/images/logo.svg', 1) }}" alt="Freedesktop Logo" />
+          </a>
+        </div>
+        <div style="position: absolute; top: 34px; height: 36px; margin: 0 0 0 142px;">
+          <span style="font-size: 34px; font-weight: lighter;">{{ project }}</span>
+        </div>
+        <div class="clearme"></div>
+      </div>
+    </div>
+
+    <div id="_content" class="documentation">
+      <small><a href="{{ pathto(master_doc + '.html', 1) }}">⌂</a></small>
+      <div xml:lang="en" class="article" id="index" lang="en">
+        {% block body %}{% endblock %}
+      </div>
+    </div>
+  </div>
+
+  <div class="page-bottom"></div>
+  <div id="_footer-wrap">
+    <div id="_footer">
+      <p>© 2000-2025 Freedesktop.org</p>
+    </div>
+  </div>
+</body>
+</html>
