@@ -891,7 +891,7 @@
 	      A single file name (including the path), even if multiple files are selected.  The system
 	      reading the desktop entry should recognize that the program in
 	      question cannot handle multiple file arguments, and it should
-	      should probably spawn and execute multiple copies of a program
+	      probably spawn and execute multiple copies of a program
 	      for each selected file if the program is not able to handle
 	      additional file arguments. If files are not on the local file system
 	      (i.e. are on HTTP or FTP locations), the files will be copied to the local
