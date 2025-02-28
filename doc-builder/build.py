@@ -8,6 +8,7 @@
 import os
 import sys
 import shutil
+import argparse
 import datetime
 import traceback
 import subprocess
@@ -343,7 +344,7 @@ class FdoSpecBuilder:
 
         return True
 
-    def process(self) -> bool:
+    def process(self, limit_spec: str | None = None) -> bool:
         """Process all specifications and generate the website."""
 
         for spec_data in self.spec_index:
@@ -353,6 +354,8 @@ class FdoSpecBuilder:
             spec_format = spec_info.get('format', 'docbook')
 
             if not spec_revs:
+                continue
+            if limit_spec and limit_spec != spec_name:
                 continue
             print_section_title(spec_name)
 
@@ -422,11 +425,15 @@ class FdoSpecBuilder:
 
 
 def run(script_dir, args):
+    parser = argparse.ArgumentParser(description='Render the XDG spec to HTML.')
+    parser.add_argument('spec_name', nargs='?', default=None, help='Only render the specified spec')
+
+    optn = parser.parse_args(args)
 
     builder = FdoSpecBuilder(script_dir)
     if not builder.load():
         return 5
-    if not builder.process():
+    if not builder.process(optn.spec_name):
         return 1
     return 0
 
