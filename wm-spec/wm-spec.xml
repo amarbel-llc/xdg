@@ -1615,6 +1615,28 @@ copies) and thus perform better. An application which creates
 pop-up windows might always want to run composited to avoid exposes.
         </para>
        </sect2>
+       <sect2><title>_NET_WM_WINDOW_OPACITY</title>
+       <programlisting><![CDATA[
+_NET_WM_WINDOW_OPACITY, CARDINAL/32
+]]></programlisting>
+       <para>
+This property indicates the desired opacity for this window with 0 being
+transparent and 0xffffffff being opaque.  Window managers acting as
+compositing managers MAY take this into account when displaying a window.
+Window managers MUST forward the value of this property to any enclosing
+frame window.  This property MAY change while the window is mapped and the
+window manager MUST respect changes while the window is mapped.
+       </para>
+       <para>
+This opacity value SHOULD be multiplied with the original window alpha value
+(which is 1 for visuals not including an alpha component) so that the window
+content is modulated by the opacity value.
+       </para>
+       <para>
+Rationale:  This property allows applications to provide values for window
+opacity in place of any inferred value.
+       </para>
+       </sect2>
 </sect1>
 <sect1>
 	<title>Window Manager Protocols</title>
