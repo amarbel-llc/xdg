@@ -49,6 +49,19 @@ class SpecsRegistry:
         self.spec_index = []
         for spec_name, spec_info in spec_info_index.items():
             revs = spec_revs.get(spec_name, [])
+
+            spec_format = spec_info.get('format', 'docbook')
+            only_single_page = spec_info.get('single_page', False)
+            spec_project_root = spec_info.get('project_root', None)
+            spec_location = spec_info.get('location', None)
+
+            # determine if we will build an additional single-page version of the spec
+            spec_info['has_extra_single_page'] = (
+                not only_single_page
+                and spec_format != 'sphinx'
+                and not (spec_project_root and not spec_location)
+            )
+
             self.spec_index.append(dict(name=spec_name, info=spec_info, revs=revs))
 
         return True

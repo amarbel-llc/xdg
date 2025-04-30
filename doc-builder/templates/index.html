@@ -50,7 +50,7 @@
             </p>
           {% else %}
             ⇨ <a href="{{spec.name}}-spec/latest">Latest Version</a>
-              {% if not spec.info.single_page and not spec.info.format == 'sphinx' %}
+              {% if spec.info.has_extra_single_page %}
               <small>(<a href="{{spec.name}}-spec/latest-single">on one page</a>)</small>
               {% endif %}
           {% endif %}
