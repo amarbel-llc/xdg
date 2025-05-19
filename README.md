@@ -16,7 +16,7 @@ Building specifications website
 The specifications website is automatically built using the [Gitlab
 continuous integration](https://gitlab.freedesktop.org/xdg/xdg-specs/-/blob/master/.gitlab-ci.yml).
 
-The sources files are in the [`web-export`](https://gitlab.freedesktop.org/xdg/xdg-specs/-/tree/master/web-export)
+The sources files are in the [`doc-builder`](https://gitlab.freedesktop.org/xdg/xdg-specs/-/tree/master/doc-builder)
 directory.
 
 Building a single spec

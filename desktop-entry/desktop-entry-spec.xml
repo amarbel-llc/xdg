@@ -4,7 +4,7 @@
 <article id="index" lang="en">
   <articleinfo>
     <title>Desktop Entry Specification</title>
-    <!-- When bumping the version, update web-export/specs.idx as well -->
+    <!-- When bumping the version, update spec-revs.toml as well -->
     <releaseinfo>Version 1.5</releaseinfo>
     <pubdate>2020-04-27</pubdate>
     <authorgroup>
