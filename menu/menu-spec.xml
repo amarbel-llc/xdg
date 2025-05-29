@@ -1821,6 +1821,11 @@
 		<entry>Game</entry>
 
 	      </row><row>
+		<entry>GameTool</entry>
+		<entry>Companion apps for games, such as addon managers, remote play clients or other tools</entry>
+		<entry>Game</entry>
+
+	      </row><row>
 		<entry>Art</entry>
 		<entry>Software to teach arts</entry>
 		<entry>Education or Science</entry>
