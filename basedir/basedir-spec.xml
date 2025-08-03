@@ -235,7 +235,7 @@
     </para>
     <para>
       The directory MUST be on a local file system and not shared with
-      any other system. The directory MUST by fully-featured by the
+      any other system. The directory MUST be fully-featured by the
       standards of the operating system. More specifically, on
       Unix-like operating systems AF_UNIX sockets, symbolic links,
       hard links, proper permissions, file locking, sparse files,
