@@ -180,7 +180,8 @@
       base directories to search for data files in addition to the
       <literal>$XDG_DATA_HOME</literal> base directory.
       The directories in <literal>$XDG_DATA_DIRS</literal> should be separated
-      with a colon ':'.
+      with the separator used for <literal>$PATH</literal> on the platform
+      (typically this is a colon <literal>:</literal>).
     </para>
     <para>
       If <literal>$XDG_DATA_DIRS</literal> is either not set or empty, a value equal to
@@ -191,7 +192,8 @@
       base directories to search for configuration files in addition to the
       <literal>$XDG_CONFIG_HOME</literal> base directory.
       The directories in <literal>$XDG_CONFIG_DIRS</literal> should be separated
-      with a colon ':'.
+      with the separator used for <literal>$PATH</literal> on the platform
+      (typically this is a colon <literal>:</literal>).
     </para>
     <para>
       If <literal>$XDG_CONFIG_DIRS</literal> is either not set or empty, a value equal to
