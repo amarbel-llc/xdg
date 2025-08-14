@@ -1342,17 +1342,23 @@ Name=Create a new Foo!
 Icon=fooview-new
     </programlisting>
   </appendix>
-  <appendix id="kde-items">
-  <title>Currently reserved for use within KDE</title>
+  <appendix id="historical-items">
+  <title>Historically Reserved Items</title>
     <para>
-      For historical reasons KDE is using some KDE-specific extensions
-      that are currently not prefixed by a <literal>X-KDE-</literal> prefix.
+      For historical reasons both KDE and GNOME are using (or have used) some
+      desktop-specific extensions without the appropriate <literal>X-KDE-</literal> or
+      <literal>X-GNOME-</literal> prefixes.
     </para>
     <itemizedlist>
       <listitem>
         <para>
          KDE specific keys: <varname>ServiceTypes</varname>,
          <varname>DocPath</varname>, <varname>InitialPreference</varname>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+         GNOME specific keys: <varname>AutostartCondition</varname>
         </para>
       </listitem>
 	  <listitem>

@@ -50,7 +50,8 @@ redirects = [
     ["ar01s11.html", "extra-actions.html"],
     ["ar01s12.html", "extending.html"],
     ["apa.html", "example.html"],
-    ["apb.html", "kde-items.html"],
+    ["apb.html", "historical-items.html"],
+    ["kde-items.html", "historical-items.html"],
     ["apc.html", "deprecated-items.html"],
     ["apd.html", "legacy-mixed.html"],
 ]
