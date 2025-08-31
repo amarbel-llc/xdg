@@ -492,6 +492,14 @@ gitrev = "HEAD"
 version = "0.1"
 gitrev = "5a8a5326ffbba993f0456ec9e25a9589b81b0774"
 
+#
+# Status Notifier Item
+#
+
+[[status-notifier-item]]
+version = "0.1"
+gitrev = "HEAD"
+
 
 #
 # Systemtray

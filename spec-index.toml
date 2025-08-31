@@ -182,6 +182,12 @@ redirects = [
 gitweb = "https://gitlab.freedesktop.org/xdg/startup-notification"
 location = "doc/startup-notification.xml"
 
+[status-notifier-item]
+local = true
+gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
+location = "status-notifier-item/status-notifier-item-spec.xml"
+draft = true
+
 [systemtray]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
