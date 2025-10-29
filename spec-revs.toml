@@ -550,24 +550,24 @@ gitrev = "HEAD"
 # WM Spec
 #
 
-# TODO: Fix wm-spec/wm-spec.xml:20: parser error : Entity 'version' not defined & co
 [[wm]]
 version = "1.5"
 gitrev = "HEAD"
 
-[[wm]]
-version = "1.4"
-gitrev = "a95af55a102b0814e81095bda46a691068009c3c"
+# FIXME: These fail to build with newer toolchain - we need a better archival solution...
+#[[wm]]
+#version = "1.4"
+#gitrev = "a95af55a102b0814e81095bda46a691068009c3c"
+#
+#[[wm]]
+#version = "1.3"
+#gitrev = "2eafacb23421d25147533a66a9eb8f0f4650a5e4"
 
-[[wm]]
-version = "1.3"
-gitrev = "2eafacb23421d25147533a66a9eb8f0f4650a5e4"
-
-# SGML
-#git:xdg/xdg-specs:wm-spec/wm-spec.sgml			d10d819f39c4c7e878288192f14248536d9d4b96		1.2	wm-spec
-#git:xdg/xdg-specs:wm-spec/wm-spec.sgml			a6e9a0a88112e5f6ac7099530e5c732c7ec6fb7f		1.1	wm-spec
+# SGML revisions, we can't build those with modern tooling anymore
+#git:xdg/xdg-specs:wm-spec/wm-spec.sgml		d10d819f39c4c7e878288192f14248536d9d4b96	1.2
+#git:xdg/xdg-specs:wm-spec/wm-spec.sgml		a6e9a0a88112e5f6ac7099530e5c732c7ec6fb7f	1.1
 # Invalid docbook:
-# b58352845cebc1d3b5754215a03ed047d1b28b11		1.0
+# b58352845cebc1d3b5754215a03ed047d1b28b11	1.0
 
 
 #

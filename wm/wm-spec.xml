@@ -1976,13 +1976,13 @@ document offers the following clarifications:
 		<listitem><para>
 Window Managers MUST honor the win_gravity field of WM_NORMAL_HINTS
 for both MapRequest <emphasis>and</emphasis> ConfigureRequest events 
-(ICCCM Version 2.0, &sect;4.1.2.3 and &sect;4.1.5)
+(ICCCM Version 2.0, section 4.1.2.3 and section 4.1.5)
 		</para></listitem>
 		<listitem><para>
 When generating synthetic ConfigureNotify events, the position given
 MUST be the top-left corner of the client window in relation to the
 origin of the root window (i.e., ignoring win_gravity) 
-(ICCCM Version 2.0, &sect;4.2.3)
+(ICCCM Version 2.0, section 4.2.3)
 		</para></listitem>
 		<listitem><para>
 Window Managers maintain a reference point for each client window and place 
@@ -2330,12 +2330,13 @@ OR OTHER DEALINGS IN THE SOFTWARE.
 		<para>Greg Badros</para>
 		<para>Matthias Clasen</para>
 		<para>David Rosenthal</para>
-                <para>Lubos Lunak</para>
-                <para>Rob Adams</para>
-                <para>Thomas Fitzsimmons</para>
-                <para>Olivier Chapuis</para>
-		<para>S&oslash;ren Sandmann</para>
-                <para>Grant Patterson</para>
+    <para>Lubos Lunak</para>
+    <para>Rob Adams</para>
+    <para>Thomas Fitzsimmons</para>
+    <para>Olivier Chapuis</para>
+    <para>Søren Sandmann</para>
+    <para>Grant Patterson</para>
+
 	</sect1>
   <sect1>
     <title>Change history</title>

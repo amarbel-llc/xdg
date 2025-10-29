@@ -229,7 +229,7 @@ format = "sphinx"
 [wm]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
-location = "wm-spec/wm-spec.xml"
+location = "wm/wm-spec.xml"
 aliases = ['wm-spec']
 labels = ['X11']
 
