@@ -76,11 +76,11 @@ class FdoSpecBuilder:
         spec_is_local = spec_info.get('local', False)
         makefile_run = False
 
-        spec_out_root = os.path.join(self._output_root, spec_name + '-spec')
+        spec_out_root = os.path.join(self._output_root, spec_name)
         os.makedirs(spec_out_root, exist_ok=True)
 
         spec_versioned_out_basename = os.path.join(
-            spec_out_root, '{}-spec-{}'.format(spec_name, spec_ver)
+            spec_out_root, '{}-{}'.format(spec_name, spec_ver)
         )
         spec_location = spec_rev.get(
             'location', spec_info.get('location', '{0}/{0}-spec.xml'.format(spec_name))
@@ -210,11 +210,11 @@ class FdoSpecBuilder:
         spec_gitrev = spec_rev.get('gitrev')
         makefile_run = False
 
-        spec_out_root = os.path.join(self._output_root, spec_name + '-spec')
+        spec_out_root = os.path.join(self._output_root, spec_name)
         os.makedirs(spec_out_root, exist_ok=True)
 
         spec_versioned_out_basename = os.path.join(
-            spec_out_root, '{}-spec-{}'.format(spec_name, spec_ver)
+            spec_out_root, '{}-{}'.format(spec_name, spec_ver)
         )
 
         spec_source_basedir = spec_rev.get(
@@ -319,7 +319,7 @@ class FdoSpecBuilder:
             )
 
         if treat_as_spec:
-            spec_dirname = spec_name + '-spec'
+            spec_dirname = spec_name
 
         # we may need to build the data to copy first
         makefile_run = self._run_makefile(spec_name, spec_info, dir_rev)
@@ -347,6 +347,18 @@ class FdoSpecBuilder:
     def process(self, limit_spec: str | None = None) -> bool:
         """Process all specifications and generate the website."""
 
+        # sanity check
+        known_specs = set()
+        for spec_data in self.spec_index:
+            spec_name = spec_data['name']
+
+            if '/' in spec_name or spec_name == 'static':
+                raise ValueError('Invalid specification name: {}'.format(spec_name))
+            if spec_name in known_specs:
+                raise ValueError('Specification "{}" was defined twice!'.format(spec_name))
+            known_specs.add(spec_name)
+
+        # render all specifications and copy files
         for spec_data in self.spec_index:
             spec_revs = spec_data['revs']
             spec_name = spec_data['name']
@@ -387,6 +399,23 @@ class FdoSpecBuilder:
                         'Encountered unknown revision type for "{}": {}'.format(spec_name, rev_type)
                     )
 
+        # create alias redirects for compatibility
+        with open(os.path.join(self._output_root, '_redirects'), 'w') as redir_f:
+            for spec_data in self.spec_index:
+                spec_name = spec_data['name']
+                spec_info = spec_data['info']
+
+                for alias in spec_info.get('aliases', []):
+                    if alias in known_specs:
+                        raise ValueError(
+                            'Specification alias "{}" collides with other specification name or other alias!'.format(
+                                alias
+                            )
+                        )
+                    known_specs.add(alias)
+                    redir_f.write('/{}/* /{}/:splat 301\n'.format(alias, spec_name))
+
+        # render index and misc pages
         self._templates.render_to_file(
             'index.html',
             os.path.join(self._output_root, 'index.html'),

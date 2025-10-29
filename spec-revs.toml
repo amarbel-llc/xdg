@@ -264,14 +264,14 @@ gitrev = "7860a2370969f6d0c970c0e9db73e06049d96413"
 version = "1.0"
 gitrev = "647153fb87e5f642a7b7a3fdcec90961f36e89ab"
 
-# Export http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd
+# Export http://www.freedesktop.org/standards/menu/menu-1.0.dtd
 # as per the specification
 [[menu]]
 type = "copy-file"
 version = "1.0"
 from = "menu/menu.dtd"
 to = "menu-1.0.dtd"
-export_root = "menu-spec"
+export_root = "menu"
 gitrev = "2403355e486ac6bc972fd150d38e3c44d086960a"
 
 [[menu]]
@@ -314,7 +314,7 @@ gitrev = "1354abdb635b560f3c36373c8074ee7e5f63abab"
 [[mpris]]
 type = "copy-dir"
 version = "2.2"
-from = "mpris-spec/doc/spec/"
+from = "mpris/doc/spec/"
 to = "latest/"
 treat_as_spec = true
 

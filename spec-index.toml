@@ -9,11 +9,13 @@ docs_url="https://www.freedesktop.org/software/appstream/docs/"
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 single_page = true
+aliases = ['autostart-spec']
 
 [basedir]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 single_page = true
+aliases = ['basedir-spec']
 
 [clipboard]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
@@ -21,6 +23,7 @@ location = "clipboard/clipboard.xml"
 local = true
 single_page = true
 labels = ['X11']
+aliases = ['clipboard-spec']
 
 [clipboard-extensions]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
@@ -28,6 +31,7 @@ location = "clipboard/clipboard-extensions.xml"
 local = true
 single_page = true
 labels = ['X11']
+aliases = ['clipboard-extensions-spec']
 
 [dbus]
 gitweb = "https://gitlab.freedesktop.org/dbus/dbus"
@@ -37,6 +41,7 @@ docs_url="https://dbus.freedesktop.org/doc/dbus-specification.html"
 [desktop-entry]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
+aliases = ['desktop-entry-spec']
 redirects = [
     ["ar01s02.html", "file-naming.html"],
     ["ar01s03.html", "basic-format.html"],
@@ -61,21 +66,25 @@ gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 single_page = true
 draft = true
+aliases = ['global-shortcuts-spec']
 
 [help-system]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 single_page = true
+aliases = ['help-system-spec']
 
 [icon-naming]
 gitweb = "https://gitlab.freedesktop.org/xdg/default-icon-theme"
 location = "spec/icon-naming-spec.xml"
 single_page = true
+aliases = ['icon-naming-spec']
 
 [icon-theme]
 gitweb = "https://gitlab.freedesktop.org/xdg/default-icon-theme"
 location = "spec/icon-theme-spec.xml"
 single_page = true
+aliases = ['icon-theme-spec']
 
 [idle-inhibit]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
@@ -83,6 +92,7 @@ local = true
 single_page = true
 location = "idle-inhibit/specification.xml"
 project_root="idle-inhibit"
+aliases = ['idle-inhibit-spec']
 
 [menu]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
@@ -111,16 +121,19 @@ redirects = [
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "mime-apps/mime-apps-spec.xml"
+aliases = ['mime-apps-spec']
 
 [mpris]
 gitweb = "https://gitlab.freedesktop.org/mpris/mpris-spec"
 local = true  # it is embedded in this repo as a submodule
-project_root="mpris-spec"
+project_root="mpris"
+aliases = ['mpris-spec']
 
 [notification]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "notification/notification-spec.xml"
+aliases = ['notification-spec']
 redirects = [
     ["ar01s02.html", "basic-design.html"],
     ["ar01s03.html", "backwards-compat.html"],
@@ -142,30 +155,36 @@ gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 single_page = true
 location = "recent-files/recent-file-spec.xml"
+aliases = ['recent-files-spec']
 
 [secret-service]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "secret-service/specification.xml"
+aliases = ['secret-service-spec']
 
 [shortcuts]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 single_page = true
-draft=true
+draft = true
+aliases = ['shortcuts-spec']
 
 [shared-mime-info]
 gitweb = "https://gitlab.freedesktop.org/xdg/shared-mime-info"
 location = "data/shared-mime-info-spec.xml"
+aliases = ['shared-mime-info-spec']
 
 [sound-naming]
 gitweb = "https://gitlab.freedesktop.org/xdg/sound-theme-spec"
 location = "spec/sound-naming-spec.xml"
 single_page = true
+aliases = ['sound-naming-spec']
 
 [sound-theme]
 gitweb = "https://gitlab.freedesktop.org/xdg/sound-theme-spec"
 location = "spec/sound-theme-spec.xml"
+aliases = ['sound-theme-spec']
 redirects = [
     ["ar01s02.html", "definitions.html"],
     ["ar01s03.html", "directory_layout.html"],
@@ -181,6 +200,7 @@ redirects = [
 [startup-notification]
 gitweb = "https://gitlab.freedesktop.org/xdg/startup-notification"
 location = "doc/startup-notification.xml"
+aliases = ['startup-notification-spec']
 
 [status-notifier-item]
 local = true
@@ -192,12 +212,14 @@ draft = true
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "systemtray/systemtray-spec.xml"
+aliases = ['systemtray-spec']
 labels = ['X11']
 
 [thumbnail]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "thumbnail/thumbnail-spec.xml"
+aliases = ['thumbnail-spec']
 
 [trash]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
@@ -208,12 +230,14 @@ format = "sphinx"
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "wm-spec/wm-spec.xml"
+aliases = ['wm-spec']
 labels = ['X11']
 
 [xembed]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "xembed/spec/xembed-spec.xml"
+aliases = ['xembed-spec']
 labels = ['X11']
 
 [xsettings]
@@ -222,4 +246,5 @@ local = true
 make_commands = []
 location = "xsettings/xsettings.xml"
 single_page = true
+aliases = ['xsettings-spec']
 labels = ['X11']
