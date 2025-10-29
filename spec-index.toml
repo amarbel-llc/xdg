@@ -98,6 +98,7 @@ aliases = ['idle-inhibit-spec']
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
 location = "menu/menu-spec.xml"
+aliases = ['menu-spec']
 redirects = [
     ["ar01s02.html", "paths.html"],
     ["ar01s03.html", "desktop-entry-extensions.html"],
