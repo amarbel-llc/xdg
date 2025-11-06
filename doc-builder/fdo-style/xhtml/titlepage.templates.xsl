@@ -129,20 +129,31 @@
     <xsl:param name="person.list" />
     <xsl:for-each select="$person.list">
       <div class="author-info">
-        <span class="author-name">
-          <xsl:value-of select="firstname"/>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="surname"/>
-          <xsl:text> </xsl:text>
-        </span>
-        <code class="email">
-          <xsl:text>&lt;</xsl:text><xsl:value-of select="normalize-space(affiliation/address/email)"/><xsl:text>&gt;</xsl:text>
-        </code>
-        <xsl:if test="normalize-space(affiliation/jobtitle) != ''">
-          <small>
-            <xsl:text>(</xsl:text><xsl:value-of select="normalize-space(affiliation/jobtitle)"/><xsl:text>)</xsl:text>
-          </small>
-        </xsl:if>
+        <xsl:choose>
+          <xsl:when test="orgname">
+            <!-- Display organization name if present -->
+            <span class="author-name">
+              <xsl:value-of select="orgname"/>
+            </span>
+          </xsl:when>
+          <xsl:otherwise>
+            <!-- Display person name (firstname/surname) and email -->
+            <span class="author-name">
+              <xsl:value-of select="firstname"/>
+              <xsl:text> </xsl:text>
+              <xsl:value-of select="surname"/>
+              <xsl:text> </xsl:text>
+            </span>
+            <code class="email">
+              <xsl:text>&lt;</xsl:text><xsl:value-of select="normalize-space(affiliation/address/email)"/><xsl:text>&gt;</xsl:text>
+            </code>
+            <xsl:if test="normalize-space(affiliation/jobtitle) != ''">
+              <small>
+                <xsl:text>(</xsl:text><xsl:value-of select="normalize-space(affiliation/jobtitle)"/><xsl:text>)</xsl:text>
+              </small>
+            </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
       </div>
     </xsl:for-each>
   </xsl:template>
