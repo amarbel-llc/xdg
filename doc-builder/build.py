@@ -44,7 +44,9 @@ class FdoSpecBuilder:
 
         return True
 
-    def _run_makefile(self, spec_name: str, spec_info, spec_rev, *, command: str | None = None):
+    def _run_build_commands(
+        self, spec_name: str, spec_info, spec_rev, *, command: str | None = None
+    ):
         """Run Makefile for a subproject, if one exists."""
 
         spec_location_root = spec_rev.get('location', spec_info.get('location', spec_name))
@@ -55,17 +57,33 @@ class FdoSpecBuilder:
         else:
             project_root = os.path.normpath(os.path.join(self._root_dir, spec_location_root, '..'))
 
-        # run Makefile if one exists to generate any files
-        if os.path.exists(os.path.join(project_root, 'Makefile')):
+        build_env = os.environ.copy()
+        build_env['DAPS_STYLEROOT'] = self._daps.style_root
+
+        # run Makefile or xdg-build-spec script if one exists to generate any files
+        if os.path.exists(os.path.join(project_root, 'xdg-build-spec')):
+            command = command if command else 'build'
+            subprocess.run(
+                [os.path.join(project_root, 'xdg-build-spec'), command],
+                env=build_env,
+                cwd=project_root,
+                check=True,
+            )
+            return True
+
+        elif os.path.exists(os.path.join(project_root, 'Makefile')):
             if spec_info.get('make_commands', None) is None:
                 args = ['make', '-C', project_root]
                 if command:
                     args.append(command)
                 subprocess.run(
                     args,
+                    env=build_env,
+                    cwd=project_root,
                     check=True,
                 )
-            return True
+                return True
+
         return False
 
     def _create_spec_html_docbook(self, spec_name: str, spec_info, spec_rev) -> bool:
@@ -74,7 +92,7 @@ class FdoSpecBuilder:
         spec_ver = spec_rev.get('version')
         spec_gitrev = spec_rev.get('gitrev')
         spec_is_local = spec_info.get('local', False)
-        makefile_run = False
+        specbuild_run = False
 
         spec_out_root = os.path.join(self._output_root, spec_name)
         os.makedirs(spec_out_root, exist_ok=True)
@@ -94,7 +112,7 @@ class FdoSpecBuilder:
                 book_filename = os.path.basename(spec_location)
 
                 # build any specification data that we may need
-                makefile_run = self._run_makefile(spec_name, spec_info, spec_rev)
+                specbuild_run = self._run_build_commands(spec_name, spec_info, spec_rev)
 
                 # find all XML files that we want to render
                 spec_files = glob(os.path.join(spec_location_root, '*.xml'))
@@ -198,8 +216,8 @@ class FdoSpecBuilder:
             )
 
         # clean up if we executed a Makefile
-        if makefile_run:
-            self._run_makefile(spec_name, spec_info, spec_rev, command='clean')
+        if specbuild_run:
+            self._run_build_commands(spec_name, spec_info, spec_rev, command='clean')
 
         return True
 
@@ -224,7 +242,7 @@ class FdoSpecBuilder:
         is_latest_spec = spec_ver == 'latest' or spec_gitrev == 'HEAD'
         if is_latest_spec:
             # build any specification data that we may need
-            makefile_run = self._run_makefile(spec_name, spec_info, spec_rev)
+            makefile_run = self._run_build_commands(spec_name, spec_info, spec_rev)
 
             self._templates.render_to_file(
                 'simple-redirect.html', os.path.join(spec_out_root, 'index.html'), url='latest/'
@@ -263,7 +281,7 @@ class FdoSpecBuilder:
 
         # clean up if we executed a Makefile
         if makefile_run:
-            self._run_makefile(spec_name, spec_info, spec_rev, command='clean')
+            self._run_build_commands(spec_name, spec_info, spec_rev, command='clean')
 
         return True
 
@@ -311,6 +329,7 @@ class FdoSpecBuilder:
         dir_from = dir_rev['from']
         dir_to = dir_rev['to']
         treat_as_spec = dir_rev.get('treat_as_spec', False)
+        spec_is_singlepage = dir_rev.get('spec_html_type', 'book') == 'single-page'
         spec_dirname = dir_rev.get('export_root', spec_name)
 
         if not dir_from or not dir_to:
@@ -321,8 +340,12 @@ class FdoSpecBuilder:
         if treat_as_spec:
             spec_dirname = spec_name
 
+        # mark that a single-page version is provided (in latest-single/, usually)
+        if treat_as_spec and spec_is_singlepage:
+            spec_info['has_extra_single_page'] = True
+
         # we may need to build the data to copy first
-        makefile_run = self._run_makefile(spec_name, spec_info, dir_rev)
+        makefile_run = self._run_build_commands(spec_name, spec_info, dir_rev)
 
         dir_dst = os.path.join(self._output_root, spec_dirname, dir_to)
         os.makedirs(os.path.dirname(dir_dst), exist_ok=True)
@@ -331,7 +354,7 @@ class FdoSpecBuilder:
         shutil.copytree(dir_src, dir_dst, dirs_exist_ok=True)
         print('\033[1m➤', 'Copied:\033[0m', dir_to, '(from {})'.format(dir_from))
 
-        if treat_as_spec:
+        if treat_as_spec and not spec_is_singlepage:
             self._templates.render_to_file(
                 'simple-redirect.html',
                 os.path.join(os.path.join(self._output_root, spec_dirname), 'index.html'),
@@ -340,7 +363,7 @@ class FdoSpecBuilder:
 
         # clean up if we executed a Makefile
         if makefile_run:
-            self._run_makefile(spec_name, spec_info, dir_rev, command='clean')
+            self._run_build_commands(spec_name, spec_info, dir_rev, command='clean')
 
         return True
 
