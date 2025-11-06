@@ -49,9 +49,9 @@
               ⇨ <a href="{{spec.info.docs_url}}">Documentation</a>
             </p>
           {% else %}
-            ⇨ <a href="{{spec.name}}-spec/latest">Latest Version</a>
+            ⇨ <a href="{{spec.name}}/latest">Latest Version</a>
               {% if spec.info.has_extra_single_page %}
-              <small>(<a href="{{spec.name}}-spec/latest-single">on one page</a>)</small>
+              <small>(<a href="{{spec.name}}/latest-single">on one page</a>)</small>
               {% endif %}
           {% endif %}
           {% if spec.revs %}
@@ -64,7 +64,7 @@
               {% elif rev.type != "copy-dir" %}
                 {% if rev.version != "latest" %}
                   <li>
-                    <a href="{{spec.name}}-spec/{{rev.version}}">version {{rev.version}}</a>
+                    <a href="{{spec.name}}/{{rev.version}}">version {{rev.version}}</a>
                   </li>
                 {% endif %}
               {% endif %}
