@@ -61,6 +61,11 @@ redirects = [
     ["apd.html", "legacy-mixed.html"],
 ]
 
+[fhs]
+gitweb = "https://gitlab.freedesktop.org/FHS/fhs-spec"
+local = true  # it is embedded in this repo as a submodule
+project_root = "fhs"
+
 [global-shortcuts]
 gitweb = "https://gitlab.freedesktop.org/xdg/xdg-specs"
 local = true
@@ -127,7 +132,7 @@ aliases = ['mime-apps-spec']
 [mpris]
 gitweb = "https://gitlab.freedesktop.org/mpris/mpris-spec"
 local = true  # it is embedded in this repo as a submodule
-project_root="mpris"
+project_root = "mpris"
 aliases = ['mpris-spec']
 
 [notification]

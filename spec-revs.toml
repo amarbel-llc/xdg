@@ -135,6 +135,26 @@ gitrev = "6855384d021d88557f80674798c584c15b547f36"
 
 
 #
+# FHS
+#
+
+[[fhs]]
+type = "copy-dir"
+version = "3.0"
+from = "fhs/build/fhs/html/fhs/"
+to = "latest/"
+treat_as_spec = true
+
+[[fhs]]
+type = "copy-dir"
+version = "3.0"
+from = "fhs/build/fhs/single-html/fhs/"
+to = "latest-single/"
+treat_as_spec = true
+spec_html_type = 'single-page'
+
+
+#
 # Global Shortcuts
 #
 
