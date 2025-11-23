@@ -103,7 +103,7 @@ class FdoSpecBuilder:
         spec_location = spec_rev.get(
             'location', spec_info.get('location', '{0}/{0}-spec.xml'.format(spec_name))
         )
-        book_filename = spec_name + '-spec.xml'
+        book_filename = spec_name + '.xml'
 
         is_latest_spec = spec_ver == 'latest' or spec_gitrev == 'HEAD'
         if is_latest_spec:
@@ -120,7 +120,7 @@ class FdoSpecBuilder:
                 if len(spec_files) == 1:
                     shutil.copy(
                         spec_files[0],
-                        os.path.join(spec_out_root, '{}-spec-latest.xml'.format(spec_name)),
+                        os.path.join(spec_out_root, '{}-latest.xml'.format(spec_name)),
                     )
             else:
                 spec_doc = GitObject(
@@ -437,6 +437,7 @@ class FdoSpecBuilder:
                         )
                     known_specs.add(alias)
                     redir_f.write('/{}/* /{}/:splat 301\n'.format(alias, spec_name))
+                    redir_f.write('/{}/{}-latest.html /{}/latest/ 301\n'.format(spec_name, alias, spec_name))
 
         # render index and misc pages
         self._templates.render_to_file(
