@@ -173,10 +173,19 @@ class FdoSpecBuilder:
         if not ret:
             print('ERROR:', 'Failed to generate HTML for', spec_name, spec_ver, file=sys.stderr)
             return False
+
+        # create additional redirects
         for redir in spec_info.get('redirects', []):
             self._templates.render_to_file(
                 'simple-redirect.html', os.path.join(spec_ver_out_dir, redir[0]), url=redir[1]
             )
+        if is_latest_spec:
+            for alias in spec_info.get('aliases', []):
+                self._templates.render_to_file(
+                    'simple-redirect.html',
+                    os.path.join(spec_out_root, alias + '-latest.html'),
+                    url='latest/',
+                )
 
         if is_latest_spec and not default_single_page:
             # for the latest version of a spec that isn't single-page, we
@@ -436,9 +445,6 @@ class FdoSpecBuilder:
                             )
                         )
                     known_specs.add(alias)
-                    redir_f.write(
-                        '/{}/{}-latest.html /{}/latest/ 301\n'.format(alias, alias, spec_name)
-                    )
                     redir_f.write('/{}/* /{}/:splat 301\n'.format(alias, spec_name))
 
         # render index and misc pages
