@@ -436,8 +436,10 @@ class FdoSpecBuilder:
                             )
                         )
                     known_specs.add(alias)
+                    redir_f.write(
+                        '/{}/{}-latest.html /{}/latest/ 301\n'.format(alias, alias, spec_name)
+                    )
                     redir_f.write('/{}/* /{}/:splat 301\n'.format(alias, spec_name))
-                    redir_f.write('/{}/{}-latest.html /{}/latest/ 301\n'.format(spec_name, alias, spec_name))
 
         # render index and misc pages
         self._templates.render_to_file(
