@@ -384,7 +384,9 @@ class FdoSpecBuilder:
         for spec_data in self.spec_index:
             spec_name = spec_data['name']
 
-            if '/' in spec_name or spec_name == 'static':
+            # we assume that specification names never contain slashes or spaces,
+            # so they can be used in paths and HTML anchors
+            if spec_name == 'static' or any(c in spec_name for c in ('/', ' ')):
                 raise ValueError('Invalid specification name: {}'.format(spec_name))
             if spec_name in known_specs:
                 raise ValueError('Specification "{}" was defined twice!'.format(spec_name))
