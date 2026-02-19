@@ -1402,6 +1402,10 @@
 		<entry>Educational software</entry>
 		<entry/>
 	      </row><row>
+		<entry>HealthFitness</entry>
+		<entry>Applications related to physical or mental health and fitness</entry>
+		<entry/>
+	      </row><row>
 		<entry>Game</entry>
 		<entry>A game</entry>
 		<entry/>
@@ -1824,6 +1828,36 @@
 		<entry>GameTool</entry>
 		<entry>Companion apps for games, such as addon managers, remote play clients or other tools</entry>
 		<entry>Game</entry>
+
+	      </row><row>
+		<entry>Exercise</entry>
+		<entry>Tracking exercise, showing exercise videos, or syncing with gym equipment</entry>
+		<entry>HealthFitness</entry>
+
+	      </row><row>
+		<entry>Medication</entry>
+		<entry>Understanding or tracking medication</entry>
+		<entry>HealthFitness</entry>
+
+	      </row><row>
+		<entry>Mindfulness</entry>
+		<entry>Meditation, journaling, digital-wellbeing, therapy, or other mental health</entry>
+		<entry>HealthFitness</entry>
+
+	      </row><row>
+		<entry>Nutrition</entry>
+		<entry>Nutrition or hydration tracking, weight control, body composition, or meal planning</entry>
+		<entry>HealthFitness</entry>
+
+	      </row><row>
+		<entry>CareProvider</entry>
+		<entry>Communicating with your doctor, scheduling an appointment, viewing test results, or managing your medical insurance</entry>
+		<entry>HealthFitness</entry>
+
+	      </row><row>
+		<entry>Sleep</entry>
+		<entry>Sleep monitoring or tracking, or assistance with sleepnesses</entry>
+		<entry>HealthFitness</entry>
 
 	      </row><row>
 		<entry>Art</entry>
