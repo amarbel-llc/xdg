@@ -112,6 +112,13 @@
         </listitem>
         <listitem>
           <para>
+            There is a set of preference ordered base directories relative to
+            which log files should be searched. This set of directories is defined
+            by the environment variable <literal>$XDG_LOG_DIRS</literal>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
             There is a single base directory relative to which user-specific
             non-essential (cached) data should be written.
             This directory is defined by the
