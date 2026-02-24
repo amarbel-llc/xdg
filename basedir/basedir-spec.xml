@@ -84,6 +84,13 @@
         </listitem>
         <listitem>
           <para>
+            There is a single base directory relative to which user-specific
+            log files should be written. This directory is defined by the
+            environment variable <literal>$XDG_LOG_HOME</literal>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
             There is a single base directory relative to which
             user-specific executable files may be written.
           </para>
