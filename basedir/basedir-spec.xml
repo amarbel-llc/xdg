@@ -370,6 +370,36 @@
       </itemizedlist>
     </para>
     <para>
+      Specifications may reference this specification by specifying the
+      location of a log file as
+      <literal>$XDG_LOG_DIRS</literal>/subdir/filename. This implies that:
+      <itemizedlist>
+        <listitem>
+          <para>
+            Such file should be installed to <literal>$logdir</literal>/subdir/filename
+            with <literal>$logdir</literal> defaulting to /var/log.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            A user-specific version of the log file may be created in
+            <literal>$XDG_LOG_HOME</literal>/subdir/filename, taking into
+            account the default value for <literal>$XDG_LOG_HOME</literal> if
+            <literal>$XDG_LOG_HOME</literal> is not set.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Lookups of the log file should search for ./subdir/filename relative to
+            all base directories specified by <literal>$XDG_LOG_HOME</literal> and
+            <literal>$XDG_LOG_DIRS</literal> . If an environment
+            variable is either not set or empty, its default value as defined by this specification
+            should be used instead.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
       If, when attempting to write a file, the destination
       directory is non-existent an attempt should be made to create it
       with permission <literal>0700</literal>. If the destination directory
@@ -388,8 +418,9 @@
       application may choose to present an error message to the user.
     </para>
     <para>
-      A specification that refers to <literal>$XDG_DATA_DIRS</literal> or
-      <literal>$XDG_CONFIG_DIRS</literal> should define what the behaviour
+      A specification that refers to <literal>$XDG_DATA_DIRS</literal>,
+      <literal>$XDG_CONFIG_DIRS</literal>, or
+      <literal>$XDG_LOG_DIRS</literal> should define what the behaviour
       must be when a file is located under multiple base directories.
       It could, for example, define that only the file under the most
       important base directory should be used or, as another example,
