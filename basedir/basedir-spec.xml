@@ -176,6 +176,23 @@
       </itemizedlist>
     </para>
     <para>
+      <literal>$XDG_LOG_HOME</literal> defines the base directory relative to
+      which user-specific log files should be stored. If
+      <literal>$XDG_LOG_HOME</literal> is either not set or empty, a default equal to
+      <literal>$HOME</literal>/.local/log should be used.
+    </para>
+    <para>
+      Log files are informational records of application activity intended for
+      debugging, auditing, or monitoring. They are append-oriented and may grow
+      without bound. Deleting log files MUST NOT affect the correctness or
+      functionality of applications.
+    </para>
+    <para>
+      Applications SHOULD organize log files into subdirectories of
+      <literal>$XDG_LOG_HOME</literal> named after the application. Applications
+      SHOULD document their log retention expectations.
+    </para>
+    <para>
       User-specific executable files may be stored in
       <literal>$HOME</literal>/.local/bin. Distributions should ensure
       this directory shows up in the UNIX <literal>$PATH</literal>
@@ -215,6 +232,18 @@
       /etc/xdg should be used.
     </para>
     <para>
+      <literal>$XDG_LOG_DIRS</literal> defines the preference-ordered set of
+      base directories to search for log files in addition to the
+      <literal>$XDG_LOG_HOME</literal> base directory.
+      The directories in <literal>$XDG_LOG_DIRS</literal> should be separated
+      with the separator used for <literal>$PATH</literal> on the platform
+      (typically this is a colon <literal>:</literal>).
+    </para>
+    <para>
+      If <literal>$XDG_LOG_DIRS</literal> is either not set or empty, a value equal to
+      /var/log should be used.
+    </para>
+    <para>
       The order of base directories denotes their importance; the first
       directory listed is the most important. When the same information is
       defined in multiple places the information defined relative to the more
@@ -224,6 +253,9 @@
       The base directory defined
       by <literal>$XDG_CONFIG_HOME</literal> is considered more important than
       any of the base directories defined by <literal>$XDG_CONFIG_DIRS</literal>.
+      The base directory defined
+      by <literal>$XDG_LOG_HOME</literal> is considered more important than
+      any of the base directories defined by <literal>$XDG_LOG_DIRS</literal>.
     </para>
     <para>
       <literal>$XDG_CACHE_HOME</literal> defines the base directory relative to
