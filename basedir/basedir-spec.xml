@@ -169,7 +169,8 @@
       (application) restarts, but that is not important or portable enough to the user that it should be stored
       in <literal>$XDG_DATA_HOME</literal>. It may contain:
       <itemizedlist>
-        <listitem><para>actions history (logs, history, recently used files, …)</para></listitem>
+        <listitem><para>actions history (history, recently used files, …).
+        Log files should be stored in <literal>$XDG_LOG_HOME</literal> instead.</para></listitem>
         <listitem><para>current state of the application that can be reused on a restart (view, layout,
         open files, undo history, …)</para></listitem>
       </itemizedlist>
