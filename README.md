@@ -1,47 +1,29 @@
-xdg-specs
-=========
+# xdg
 
-This repository contains the XDG specifications that are
-readable at:
+A personal fork of the freedesktop.org [XDG Base Directory
+Specification](https://specifications.freedesktop.org/basedir-spec/latest/),
+trimmed down to the parts that are actively maintained here:
 
-  https://specifications.freedesktop.org/
+- `doc/man/` — `scdoc` sources for `man 7` pages covering the base directory
+  variables (`XDG_CONFIG_HOME`, `XDG_DATA_HOME`, …), including the proposed
+  `XDG_LOG_HOME` / `XDG_LOG_DIRS`.
+- `basedir/basedir-spec.xml` — the DocBook spec, extended with the
+  `XDG_LOG_HOME` / `XDG_LOG_DIRS` additions.
+- `docs/plans/` — design notes behind those additions.
 
-To discuss the specifications, you may use the xdg mailing list:
+The upstream website builder, the other freedesktop specifications, and the
+`fhs` / `mpris` submodules have been removed; this repository is not used to
+build <https://specifications.freedesktop.org/>.
 
-  http://lists.freedesktop.org/mailman/listinfo/xdg
+## Building the manpages
 
-Building specifications website
-===============================
-
-The specifications website is automatically built using the [Gitlab
-continuous integration](https://gitlab.freedesktop.org/xdg/xdg-specs/-/blob/master/.gitlab-ci.yml).
-
-The sources files are in the [`doc-builder`](https://gitlab.freedesktop.org/xdg/xdg-specs/-/tree/master/doc-builder)
-directory.
-
-Building a single spec
-======================
-
-To build a single spec in `article` docbook xml format you can use xmlto, e.g.:
 ```bash
-xmlto html-nochunks notification/notification-spec.xml -o _build/
+nix build      # or: just build
 ```
 
-To build the website HTML of a single spec, you can invoke the doc-builder with
-the specification name as a parameter:
-```bash
-./doc-builder/build.py notification
-```
+The default flake package renders every `doc/man/*.7.scd` to
+`result/share/man/man7/*.7` with `scdoc`.
 
-How to report issues
-====================
+## Licenses
 
-Issues should be reported to:
-
-   https://gitlab.freedesktop.org/xdg/xdg-specs/-/issues
-
-
-Licenses
-========
-
-Please refer to the individual files for their licenses.
+See `LICENSE.CC-BY-SA-4.0` and `LICENSE.LGPL-3.0`.

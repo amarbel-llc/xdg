@@ -1,1 +1,0 @@
-./doc-builder/validate.py

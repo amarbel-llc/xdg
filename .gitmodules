@@ -1,6 +1,0 @@
-[submodule "fhs"]
-	path = fhs
-	url = https://gitlab.freedesktop.org/FHS/fhs-spec.git
-[submodule "mpris-spec"]
-	path = mpris
-	url = https://gitlab.freedesktop.org/mpris/mpris-spec.git

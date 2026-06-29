@@ -1,9 +1,0 @@
-.deps
-.libs
-Makefile
-Makefile.in
-gtk-client
-gtk-embedder
-qt-client
-qt-embedder
-moc_*
