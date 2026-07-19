@@ -18,8 +18,9 @@
     statix.enable = true;
     deadnix.enable = true;
     # xdg is versionless by design: zero tags, no version literals, and eng
-    # consumes it as a rev-pinned master tarball — nothing here versions
-    # independently of the repo itself. conformist v0.1.19 fixed the
+    # consumes it by tracking master (the archive/master.tar.gz flake input,
+    # advanced by normal flake updates) — never by version or tag, so nothing
+    # here versions independently of the repo. conformist v0.1.19 fixed the
     # eng-versioning trigger gate (conformist#92) so the linter now FAILS a
     # flake-bearing repo with no version.env instead of silently skipping;
     # under the fleet policy ("adopt version.env where a version exists"),
