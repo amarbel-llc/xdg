@@ -10,19 +10,22 @@
 # igloo#87, igloo#88 for the upstream crashes that predated that fix). Here
 # live nixfmt, statix, deadnix, the eng-versioning key, and repo-specific
 # excludes.
-_: {
+{ lib, ... }:
+{
   programs.nixfmt.enable = true;
 
   linters = {
     statix.enable = true;
     deadnix.enable = true;
-    # xdg has neither go.mod nor Cargo.toml at the tree root, so
-    # eng-versioning(7) can't derive the key; pin it explicitly, matching the
-    # fleet convention (doppelgang/circus/igloo all pin explicitly). xdg has
-    # no version.env yet — nothing here versions independently of the repo
-    # itself — so this check is currently inert; see the adoption commit
-    # message for details.
-    eng-versioning.key = "XDG_VERSION";
+    # xdg is versionless by design: zero tags, no version literals, and eng
+    # consumes it as a rev-pinned master tarball — nothing here versions
+    # independently of the repo itself. conformist v0.1.19 fixed the
+    # eng-versioning trigger gate (conformist#92) so the linter now FAILS a
+    # flake-bearing repo with no version.env instead of silently skipping;
+    # under the fleet policy ("adopt version.env where a version exists"),
+    # xdg is the versionless case and opts out explicitly. Tracked at xdg#2
+    # — re-enable by adopting version.env if a release process ever lands.
+    eng-versioning.enable = lib.mkForce false;
   };
 
   settings.excludes = [
