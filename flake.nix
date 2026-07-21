@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-master.url = "github:NixOS/nixpkgs/567a49d1913ce81ac6e9582e3553dd90a955875f";
     utils.url = "https://flakehub.com/f/numtide/flake-utils/0.1.102";
+    utils.inputs.systems.follows = "igloo/systems";
 
     # igloo's overlay provides pkgs.gomod2nix (and its buildGoApplication
     # family) — a package plain nixpkgs does not carry. The eng-impure preset
