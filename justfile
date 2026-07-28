@@ -2,7 +2,7 @@ default: lint build
 
 build: build-nix
 
-# Render every doc/man/*.7.scd to result/share/man/man7/*.7 with scdoc.
+# render every doc/man/*.7.scd to result/share/man/man7/*.7 with scdoc
 build-nix:
     nix build --show-trace
 
@@ -35,12 +35,12 @@ lint-worktree:
 
 codemod-fmt: codemod-fmt-tree
 
-# Format the tree in place (repair mode) via `nix fmt`.
+# format the tree in place (repair mode) via `nix fmt`
 codemod-fmt-tree:
     nix fmt
 
 clean: clean-build
 
-# Remove the built manpages output link.
+# remove the built manpages output link
 clean-build:
     rm -rf result
