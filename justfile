@@ -12,6 +12,8 @@ lint: lint-fmt
 # eng-versioning, flake-outputs/lock), via the sandboxed checks.formatting
 # derivation. Does NOT modify files — the modifying counterpart is
 # `codemod-fmt`.
+#
+# check formatting and the eng file-based linters
 lint-fmt:
     #!/usr/bin/env bash
     set -euo pipefail
@@ -23,6 +25,8 @@ lint-impure: lint-worktree
 # The impure eng checks (git-remotes, sweatfile, agents-md) against the
 # working tree, where .git is available. Runs conformist from the devShell
 # (direnv `use flake`).
+#
+# run the impure eng conformist checks against the working tree
 lint-worktree:
     #!/usr/bin/env bash
     set -euo pipefail
